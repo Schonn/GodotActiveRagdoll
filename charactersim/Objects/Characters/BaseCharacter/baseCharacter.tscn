@@ -1,0 +1,943 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Objects/Characters/BaseCharacter/baseCharacterScript.gd" type="Script" id=1]
+[ext_resource path="res://Configurations/MaterialTypes/highFriction.tres" type="PhysicsMaterial" id=2]
+
+[sub_resource type="CubeMesh" id=7]
+
+[sub_resource type="CubeMesh" id=18]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=9]
+
+[sub_resource type="CubeMesh" id=10]
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="CubeMesh" id=11]
+
+[sub_resource type="BoxShape" id=4]
+
+[sub_resource type="CubeMesh" id=12]
+
+[sub_resource type="CubeMesh" id=13]
+
+[sub_resource type="CubeMesh" id=14]
+
+[sub_resource type="CubeMesh" id=19]
+
+[sub_resource type="CubeMesh" id=20]
+
+[sub_resource type="CubeMesh" id=15]
+
+[sub_resource type="CubeMesh" id=16]
+
+[sub_resource type="CubeMesh" id=17]
+
+[sub_resource type="CubeMesh" id=21]
+
+[sub_resource type="CubeMesh" id=22]
+
+[sub_resource type="CubeMesh" id=5]
+
+[sub_resource type="BoxShape" id=6]
+
+[node name="BaseCharacter" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Head" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.600722, -0.122685 )
+mass = 510.204
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0315542 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="Head/meshes_default"]
+transform = Transform( 0.483203, 0, 0, 0, 0.482974, -0.0142367, 0, 0.0129694, 0.471618, 4.72311e-12, 0.194563, 0.0313216 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="mesh_emotion4" type="MeshInstance" parent="Head/meshes_default"]
+transform = Transform( 0.367387, 0, 0, 0, 0.569596, 0, 0, 0, 0.478176, 0, 0.199023, 0.0410549 )
+mesh = SubResource( 18 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Head"]
+transform = Transform( 0.54333, 0, 0, 0, 0.454471, 0, 0, 0, 0.497633, 0, 0.182415, 0.0153241 )
+shape = SubResource( 1 )
+
+[node name="PositiveMeasure" type="Position3D" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0.5 )
+
+[node name="NegativeMeasure" type="Position3D" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0.5 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.384036, -0.282101 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Neck")
+
+[node name="moveCycle_FarWave" type="Spatial" parent="Head"]
+editor/display_folded = true
+visible = false
+
+[node name="HandLeftHelper0" type="Position3D" parent="Head/moveCycle_FarWave"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107147, 0.867206, 1.30251 )
+
+[node name="HandLeftHelper1" type="Position3D" parent="Head/moveCycle_FarWave"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3421, 1.48415, 1.26754 )
+
+[node name="HandLeftHelper2" type="Position3D" parent="Head/moveCycle_FarWave"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.33855, 0.446253, 1.34101 )
+
+[node name="HandRightHelper0" type="Position3D" parent="Head/moveCycle_FarWave"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40917, -2.37469, 0.189701 )
+
+[node name="GyroTop" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0171162, -2.11692, 0 )
+visible = false
+collision_layer = 0
+collision_mask = 0
+mass = 6687.24
+gravity_scale = -128.0
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="GyroTop"]
+transform = Transform( 0.14495, 0, 0, 0, 0.0626952, 0, 0, 0, 0.141522, 0, 0, -0.0276576 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="GyroTop"]
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../GyroBottom")
+
+[node name="GyroBottom" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0171162, -2.31341, 0 )
+visible = false
+collision_layer = 0
+collision_mask = 0
+mass = 6687.24
+gravity_scale = 128.0
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="GyroBottom"]
+transform = Transform( 0.14495, 0, 0, 0, 0.0626952, 0, 0, 0, 0.141522, 0, 0, -0.0276576 )
+shape = SubResource( 1 )
+
+[node name="PositiveMeasure" type="Position3D" parent="GyroBottom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0.5 )
+
+[node name="NegativeMeasure" type="Position3D" parent="GyroBottom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0.5 )
+
+[node name="Neck" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.311185, -0.321413 )
+mass = 510.204
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="Neck"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0171162, -2.4281, 0.198728 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="Neck/meshes_default"]
+transform = Transform( 0.203121, 4.72929e-11, 0, -1.84158e-09, 0.494342, 0, 0, 0, 0.203121, -0.0171162, 2.35089, -0.222033 )
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Neck"]
+transform = Transform( 0.19836, 0, 0, 0, 0.429245, 0, 0, 0, 0.19836, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="PositiveMeasure" type="Position3D" parent="Neck"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0.5 )
+
+[node name="NegativeMeasure" type="Position3D" parent="Neck"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0.5 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="Neck"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.554409, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Chest")
+
+[node name="Chest" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.630058, 0 )
+mass = 510.204
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="Chest"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0171162, -1.48686, 0 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="Chest/meshes_default"]
+transform = Transform( 0.607851, 0, 0, 0, 0.470176, 0.0718622, 0, -0.0685784, 0.492691, -0.0171162, 1.54194, -0.166471 )
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Chest"]
+transform = Transform( 0.429245, 0, 0, 0, 0.429245, 0, 0, 0, 0.429245, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="Chest"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000455618, -0.454793, -0.221749 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Spine")
+
+[node name="PositiveMeasure" type="Position3D" parent="Chest"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0.5 )
+
+[node name="NegativeMeasure" type="Position3D" parent="Chest"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0.5 )
+
+[node name="Spine" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.39696, -0.213532 )
+mass = 510.204
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="Spine"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0171162, -0.71996, 0.213532 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="Spine/meshes_default"]
+transform = Transform( 0.435137, 4.05252e-10, 0, -3.92637e-10, 0.421589, 0, 0, 0, 0.328592, -0.0171162, 0.71996, -0.217567 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Spine"]
+transform = Transform( 0.16934, 0, 0, 0, 0.29354, 0, 0, 0, 0.16934, 0, 0, -0.00403467 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="Spine"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32901, 0.00317395 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Pelvis")
+
+[node name="Pelvis" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.21325, 0 )
+mass = 510.204
+gravity_scale = 3.0
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="Pelvis"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0171162, 0.0963299, 0 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="Pelvis/meshes_default"]
+transform = Transform( 0.575324, 0, 0, 0, 0.509023, -0.0688711, 0, 0.0788561, 0.444568, -0.0171162, 0.134927, -0.160847 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Pelvis"]
+transform = Transform( 0.429245, 0, 0, 0, 0.429245, 0, 0, 0, 0.429245, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="Pelvis"]
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../GyroBottom")
+linear_limit_x/enabled = false
+linear_limit_y/enabled = false
+linear_limit_z/enabled = false
+
+[node name="moveCycle_WalkNormal" type="Spatial" parent="Pelvis"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00471675, -2.2493, 0 )
+visible = false
+
+[node name="FootLeftHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279772, -0.557121, -1.03917 )
+
+[node name="FootLeftHelper1" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279772, 0.104657, -0.671969 )
+
+[node name="FootLeftHelper2" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279772, 0.120148, 0.607289 )
+
+[node name="FootLeftHelper3" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.339049, -0.549927, 1.06384 )
+
+[node name="FootRightHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.284307, 0.120148, 0.607289 )
+
+[node name="FootRightHelper1" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.298168, -0.549927, 1.06384 )
+
+[node name="FootRightHelper2" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.284307, -0.557121, -1.03917 )
+
+[node name="FootRightHelper3" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.284307, 0.104657, -0.671969 )
+
+[node name="HandLeftHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32393, 3.1401, 1.18544 )
+
+[node name="HandLeftHelper1" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43368, 2.2017, 0.339197 )
+
+[node name="HandLeftHelper2" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43368, 2.83379, -0.827153 )
+
+[node name="HandRightHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50614, 2.82344, -0.917337 )
+
+[node name="HandRightHelper1" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37481, 2.2232, -0.156008 )
+
+[node name="HandRightHelper2" type="Position3D" parent="Pelvis/moveCycle_WalkNormal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3284, 3.03953, 1.00716 )
+
+[node name="moveCycle_WalkStrafeLeft" type="Spatial" parent="Pelvis"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00471675, -2.2493, 0 )
+visible = false
+
+[node name="FootLeftHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.391193, -0.557121, -1.03917 )
+
+[node name="FootLeftHelper1" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.155161, 0.143943, -0.73324 )
+
+[node name="FootLeftHelper2" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.905582, 0.113027, 0.17064 )
+
+[node name="FootLeftHelper3" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61083, -0.607236, 0.773873 )
+
+[node name="FootRightHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026084, 0.080102, 0.628953 )
+
+[node name="FootRightHelper1" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597569, -0.640865, 1.47722 )
+
+[node name="FootRightHelper2" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21141, -0.573546, -0.47705 )
+
+[node name="FootRightHelper3" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.864132, 0.136957, -0.177064 )
+
+[node name="HandLeftHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34198, 3.29441, 1.1832 )
+
+[node name="HandLeftHelper1" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22317, 2.5506, 0.909659 )
+
+[node name="HandLeftHelper2" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60837, 3.24644, 0.410362 )
+
+[node name="HandRightHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55123, 2.98348, 0.170956 )
+
+[node name="HandRightHelper1" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09853, 2.2668, 0.539947 )
+
+[node name="HandRightHelper2" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157149, 3.19593, 1.13729 )
+
+[node name="moveCycle_WalkStrafeRight" type="Spatial" parent="Pelvis"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00471675, -2.2493, 0 )
+
+[node name="FootLeftHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.980267, -0.460546, -0.682705 )
+
+[node name="FootLeftHelper1" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.824013, 0.151402, -0.263672 )
+
+[node name="FootLeftHelper2" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111108, 0.104051, 0.555754 )
+
+[node name="FootLeftHelper3" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.232387, -0.499113, 1.48945 )
+
+[node name="FootRightHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.783853, 0.154404, 0.290508 )
+
+[node name="FootRightHelper1" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36245, -0.465433, 0.77734 )
+
+[node name="FootRightHelper2" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.299261, -0.558286, -1.02416 )
+
+[node name="FootRightHelper3" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.150007, 0.138656, -0.684889 )
+
+[node name="HandLeftHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.419565, 3.18473, 1.24388 )
+
+[node name="HandLeftHelper1" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3841, 2.2017, 0.341163 )
+
+[node name="HandLeftHelper2" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97573, 2.90942, -0.694337 )
+
+[node name="HandRightHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20157, 2.86179, -0.750818 )
+
+[node name="HandRightHelper1" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52687, 2.17895, -0.130046 )
+
+[node name="HandRightHelper2" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88442, 3.14753, 0.800718 )
+
+[node name="moveCycle_StandIdle" type="Spatial" parent="Pelvis"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00471675, -2.2493, 0 )
+visible = false
+
+[node name="FootLeftHelper0" type="Position3D" parent="Pelvis/moveCycle_StandIdle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.498154, -0.424335, -0.171174 )
+
+[node name="FootLeftHelper1" type="Position3D" parent="Pelvis/moveCycle_StandIdle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.801657, -0.30979, -0.213554 )
+
+[node name="FootRightHelper0" type="Position3D" parent="Pelvis/moveCycle_StandIdle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.450102, -0.421074, -0.21508 )
+
+[node name="FootRightHelper1" type="Position3D" parent="Pelvis/moveCycle_StandIdle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.213754, -0.325946, -0.160928 )
+
+[node name="HandLeftHelper0" type="Position3D" parent="Pelvis/moveCycle_StandIdle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16112, 1.74086, -0.206282 )
+
+[node name="HandLeftHelper1" type="Position3D" parent="Pelvis/moveCycle_StandIdle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5858, 1.74305, -0.19575 )
+
+[node name="HandRightHelper0" type="Position3D" parent="Pelvis/moveCycle_StandIdle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24074, 1.7506, -0.176046 )
+
+[node name="HandRightHelper1" type="Position3D" parent="Pelvis/moveCycle_StandIdle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57265, 1.73744, -0.181216 )
+
+[node name="obstacleTestArea" type="Area" parent="Pelvis"]
+editor/display_folded = true
+transform = Transform( 1.13573, 0, 0, 0, 6.27661, 0, 0, 0, 1.29986, 0, 0.842094, 0.759322 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Pelvis/obstacleTestArea"]
+shape = SubResource( 4 )
+
+[node name="ClavLeft" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.242552, -0.302468, -0.29411 )
+mass = 20.4082
+gravity_scale = 0.01
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="ClavLeft"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.81445, -0.225436, 0.29411 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="ClavLeft/meshes_default"]
+transform = Transform( 0.313344, 0, 0, 0, 0.203572, 0, 0, 0, 0.28019, 0.676793, 1.89012, -0.272928 )
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="ClavLeft"]
+transform = Transform( 0.153477, -3.5925e-09, 0, -3.5925e-09, 0.235664, 0, 0, 0, 0.153477, -1.78814e-07, 0.230285, 0 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="ClavLeft"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Chest")
+angular_limit_x/upper_angle = 10.0
+angular_limit_x/lower_angle = -10.0
+angular_limit_z/upper_angle = 10.0
+angular_limit_z/lower_angle = -10.0
+
+[node name="UpperArmLeft" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.872598, -0.302468, -0.29411 )
+mass = 20.4082
+gravity_scale = 0.01
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="UpperArmLeft"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.81445, -0.855482, 0.29411 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="UpperArmLeft/meshes_default"]
+transform = Transform( 0.79067, 0, 0, 0, 0.251213, 0, 0, 0, 0.219435, 1.56926, 1.81445, -0.29411 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="UpperArmLeft"]
+transform = Transform( 0.153477, -1.98918e-08, 0, -1.98918e-08, 0.608548, 0, 0, 0, 0.153477, 2.98023e-08, 0.611447, 0 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="UpperArmLeft"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../ClavLeft")
+angular_limit_z/lower_angle = -90.0
+
+[node name="LowerArmLeft" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 2.22726, -0.302468, -0.29411 )
+mass = 20.4082
+gravity_scale = 0.01
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="LowerArmLeft"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.81445, -2.21014, 0.29411 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="LowerArmLeft/meshes_default"]
+transform = Transform( 0.692427, 0, 0, 0, 0.239178, 0, 0, 0, 0.259516, 2.88059, 1.81445, -0.29411 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="LowerArmLeft"]
+transform = Transform( 0.153477, -1.98918e-08, 0, -1.98918e-08, 0.608548, 0, 0, 0, 0.153477, 2.98023e-08, 0.611447, 0 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="LowerArmLeft"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../UpperArmLeft")
+angular_limit_x/upper_angle = 170.0
+angular_limit_x/lower_angle = 10.0
+
+[node name="physJointHand" type="Generic6DOFJoint" parent="LowerArmLeft"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, -5.96046e-08, 1.27334, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../HandLeftHelper")
+angular_limit_x/enabled = false
+angular_limit_x/upper_angle = 50.0
+angular_limit_x/lower_angle = -50.0
+angular_limit_y/enabled = false
+angular_limit_y/lower_angle = -180.0
+angular_limit_z/enabled = false
+
+[node name="HandLeftHelper" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.54007, -0.29348, -0.298472 )
+collision_layer = 0
+collision_mask = 0
+mass = 51.0204
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="HandLeftHelper"]
+transform = Transform( 0.05, 0, -9.26789e-10, 0, 0.05, 0, 9.26789e-10, 0, 0.05, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="HandLeftHelper"]
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Chest")
+linear_limit_x/softness = 0.01
+linear_limit_x/restitution = 0.01
+linear_limit_y/softness = 0.01
+linear_limit_y/restitution = 0.01
+linear_limit_z/softness = 0.01
+linear_limit_z/restitution = 0.01
+
+[node name="HandLeft" type="RigidBody" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.46896, -0.279858, -0.248046 )
+mass = 20.4082
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="HandLeft"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.248046, -1.83706, 3.45184 )
+
+[node name="mesh_attached" type="MeshInstance" parent="HandLeft/meshes_default"]
+transform = Transform( 0.501131, 0, 0, 0, 0.501131, 0, 0, 0, 0.501131, 3.97619, 1.84705, -0.291192 )
+mesh = SubResource( 19 )
+material/0 = null
+
+[node name="mesh_unattached" type="MeshInstance" parent="HandLeft/meshes_default"]
+transform = Transform( 0.704726, 0, 0, 0, 0.218099, 0, 0, 0, 0.436211, 4.21777, 1.83706, -0.304131 )
+mesh = SubResource( 20 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="HandLeft"]
+transform = Transform( 0.362887, 0, 3.04002e-09, 0, 0.17703, 0, 3.59577e-09, 0, 0.376347, -1.49012e-08, 0, -0.418877 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="HandLeft"]
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../LowerArmLeft")
+angular_limit_x/upper_angle = 5.0
+angular_limit_x/lower_angle = -5.0
+angular_limit_y/upper_angle = 5.0
+angular_limit_y/lower_angle = -5.0
+angular_limit_z/upper_angle = 5.0
+angular_limit_z/lower_angle = -5.0
+
+[node name="attachJoint" type="Generic6DOFJoint" parent="HandLeft"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04308e-07, -0.24488, -0.458631 )
+nodes/node_a = NodePath("..")
+collision/exclude_nodes = false
+linear_limit_x/enabled = false
+linear_limit_x/upper_distance = 0.1
+linear_limit_x/lower_distance = -0.1
+angular_limit_x/enabled = false
+linear_limit_y/enabled = false
+linear_limit_y/upper_distance = 0.1
+linear_limit_y/lower_distance = -0.1
+angular_limit_y/enabled = false
+linear_limit_z/enabled = false
+linear_limit_z/upper_distance = 0.1
+linear_limit_z/lower_distance = -0.1
+angular_limit_z/enabled = false
+
+[node name="attachRay" type="RayCast" parent="HandLeft/attachJoint"]
+enabled = true
+cast_to = Vector3( 0, -0.5, -0.5 )
+
+[node name="ClavRight" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.234463, -0.302468, -0.29411 )
+mass = 20.4082
+gravity_scale = 0.01
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="ClavRight"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.81445, -0.251579, 0.29411 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="ClavRight/meshes_default"]
+transform = Transform( 0.313344, 0, 0, 0, 0.203572, 0, 0, 0, 0.28019, -0.683071, 1.89794, -0.275016 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="ClavRight"]
+transform = Transform( 0.153477, -3.5925e-09, 0, -3.5925e-09, 0.235664, 0, 0, 0, 0.153477, -1.78814e-07, 0.230285, 0 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="ClavRight"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Chest")
+angular_limit_x/upper_angle = 30.0
+angular_limit_x/lower_angle = -30.0
+angular_limit_z/upper_angle = 30.0
+angular_limit_z/lower_angle = -30.0
+
+[node name="UpperArmRight" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.847716, -0.302468, -0.29411 )
+mass = 20.4082
+gravity_scale = 0.01
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="UpperArmRight"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.81445, -0.864832, 0.29411 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="UpperArmRight/meshes_default"]
+transform = Transform( 0.79067, 0, 0, 0, 0.251213, 0, 0, 0, 0.219435, -1.62747, 1.81445, -0.29411 )
+mesh = SubResource( 16 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="UpperArmRight"]
+transform = Transform( 0.153477, -1.98918e-08, 0, -1.98918e-08, 0.608548, 0, 0, 0, 0.153477, 2.98023e-08, 0.611447, 0 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="UpperArmRight"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../ClavRight")
+angular_limit_z/lower_angle = 90.0
+
+[node name="LowerArmRight" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.23284, -0.302468, -0.29411 )
+mass = 20.4082
+gravity_scale = 0.01
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="LowerArmRight"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.81445, -2.24996, 0.29411 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="LowerArmRight/meshes_default"]
+transform = Transform( 0.692427, 0, 0, 0, 0.239178, 0, 0, 0, 0.259516, -2.88579, 1.80691, -0.263944 )
+mesh = SubResource( 17 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="LowerArmRight"]
+transform = Transform( 0.153477, -1.98918e-08, 0, -1.98918e-08, 0.608548, 0, 0, 0, 0.153477, 2.98023e-08, 0.611447, 0 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="LowerArmRight"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../UpperArmRight")
+angular_limit_x/upper_angle = 170.0
+angular_limit_x/lower_angle = 10.0
+
+[node name="physJointHand" type="Generic6DOFJoint" parent="LowerArmRight"]
+transform = Transform( -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 1.19209e-07, 1.27035, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../HandRightHelper")
+angular_limit_x/enabled = false
+angular_limit_x/upper_angle = 50.0
+angular_limit_x/lower_angle = -50.0
+angular_limit_y/enabled = false
+angular_limit_y/upper_angle = 100.0
+angular_limit_y/lower_angle = 100.0
+angular_limit_z/enabled = false
+
+[node name="HandRightHelper" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.50755, -0.326456, -0.302268 )
+collision_layer = 0
+collision_mask = 0
+mass = 51.0204
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="HandRightHelper"]
+transform = Transform( 0.05, 0, 1.43871e-16, 0, 0.05, 0, -1.43871e-16, 0, 0.05, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="HandRightHelper"]
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Chest")
+linear_limit_x/softness = 0.01
+linear_limit_x/restitution = 0.01
+linear_limit_y/softness = 0.01
+linear_limit_y/restitution = 0.01
+linear_limit_z/softness = 0.01
+linear_limit_z/restitution = 0.01
+
+[node name="HandRight" type="RigidBody" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.50755, -0.326456, -0.302268 )
+mass = 20.4082
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="HandRight"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.302268, -1.79046, -3.52467 )
+
+[node name="mesh_attached" type="MeshInstance" parent="HandRight/meshes_default"]
+transform = Transform( -0.501131, 0, 0, 0, -0.537093, 0, 0, 0, -0.501131, -3.92958, 1.84705, -0.25827 )
+mesh = SubResource( 21 )
+material/0 = null
+
+[node name="mesh_unattached" type="MeshInstance" parent="HandRight/meshes_default"]
+transform = Transform( 0.7, 0, 0, 0, 0.2, 0, 0, 0, 0.419562, -4.12806, 1.83228, -0.252089 )
+mesh = SubResource( 22 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="HandRight"]
+transform = Transform( 0.362887, 0, 3.04002e-09, 0, 0.17703, 0, 3.59577e-09, 0, 0.376347, -0.00234929, 0.0490577, 0.355224 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="HandRight"]
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../LowerArmRight")
+angular_limit_x/upper_angle = 5.0
+angular_limit_x/lower_angle = -5.0
+angular_limit_y/upper_angle = 5.0
+angular_limit_y/lower_angle = -5.0
+angular_limit_z/upper_angle = 5.0
+angular_limit_z/lower_angle = -5.0
+
+[node name="attachJoint" type="Generic6DOFJoint" parent="HandRight"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, -0.212918, 0.397813 )
+nodes/node_a = NodePath("..")
+collision/exclude_nodes = false
+linear_limit_x/enabled = false
+linear_limit_x/upper_distance = 0.1
+linear_limit_x/lower_distance = -0.1
+angular_limit_x/enabled = false
+linear_limit_y/enabled = false
+linear_limit_y/upper_distance = 0.1
+linear_limit_y/lower_distance = -0.1
+angular_limit_y/enabled = false
+linear_limit_z/enabled = false
+linear_limit_z/upper_distance = 0.1
+linear_limit_z/lower_distance = -0.1
+angular_limit_z/enabled = false
+
+[node name="attachRay" type="RayCast" parent="HandRight/attachJoint"]
+enabled = true
+cast_to = Vector3( 0, -0.5, 0.5 )
+
+[node name="FootLeftHelper" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492386, -4.98984, -0.120068 )
+mass = 51.0204
+physics_material_override = ExtResource( 2 )
+gravity_scale = 10.0
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="FootLeftHelper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47527, 2.87292, 0.120068 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="FootLeftHelper/meshes_default"]
+transform = Transform( 0.292313, 1.87766e-10, 0, -2.73083e-10, 0.200988, 0, 0, 0, 0.541132, 0.47527, -2.87292, 0.146592 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="FootLeftHelper"]
+transform = Transform( 0.200366, 0, 0, 0, 0.200988, 0, 0, 0, 0.541132, 0, 0, 0.26666 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="FootLeftHelper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00441355, -0.282101 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Pelvis")
+
+[node name="FootRightHelper" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483473, -4.98984, -0.120068 )
+mass = 51.0204
+physics_material_override = ExtResource( 2 )
+gravity_scale = 10.0
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="FootRightHelper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.500589, 2.87292, 0.120068 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="FootRightHelper/meshes_default"]
+transform = Transform( 0.292313, 1.87766e-10, 0, -2.73083e-10, 0.200988, 0, 0, 0, 0.541132, -0.500589, -2.87292, 0.146592 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="FootRightHelper"]
+transform = Transform( 0.200366, 0, 0, 0, 0.200988, 0, 0, 0, 0.541132, 0, 0, 0.26666 )
+shape = SubResource( 1 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="FootRightHelper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00441355, -0.282101 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Pelvis")
+
+[node name="ThighRight" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.477062, -2.47816, -0.168971 )
+mass = 20.4082
+gravity_scale = 0.01
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="ThighRight"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.36124, 0.494178, 0.168971 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="ThighRight/meshes_default"]
+transform = Transform( 4.09095e-08, 0.270372, 0, -0.541863, 2.04125e-08, 0, 0, 0, 0.281311, -0.485037, -0.913274, -0.168971 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="ThighRight"]
+transform = Transform( 0.541863, 1.65691e-08, 0, 1.65691e-08, 0.162807, 0, 0, 0, 0.153477, 0.552034, 0.00914064, 0 )
+shape = SubResource( 6 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="ThighRight"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Pelvis")
+angular_limit_y/upper_angle = 40.0
+angular_limit_y/lower_angle = -170.0
+angular_limit_z/upper_angle = 90.0
+angular_limit_z/lower_angle = -90.0
+
+[node name="CalfRight" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.477062, -3.63206, -0.168971 )
+mass = 20.4082
+gravity_scale = 0.01
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="CalfRight"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.51514, 0.494178, 0.168971 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="CalfRight/meshes_default"]
+transform = Transform( 4.09095e-08, 0.270372, 0, -0.541863, 2.04125e-08, 0, 0, 0, 0.281311, -0.485037, -2.06717, -0.168971 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="CalfRight"]
+transform = Transform( 0.541863, 1.65691e-08, 0, 1.65691e-08, 0.162807, 0, 0, 0, 0.153477, 0.552034, 0.00914064, 0 )
+shape = SubResource( 6 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="CalfRight"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../ThighRight")
+angular_limit_y/upper_angle = 170.0
+
+[node name="physJointFoot" type="Generic6DOFJoint" parent="CalfRight"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 1.16308, -0.00341463, -0.00710648 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../FootRightHelper")
+angular_limit_x/enabled = false
+angular_limit_x/upper_angle = 40.0
+angular_limit_x/lower_angle = -40.0
+angular_limit_y/enabled = false
+angular_limit_y/upper_angle = 40.0
+angular_limit_y/lower_angle = -40.0
+angular_limit_z/enabled = false
+angular_limit_z/upper_angle = 40.0
+angular_limit_z/lower_angle = -40.0
+
+[node name="ThighLeft" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.489522, -2.47816, -0.168971 )
+mass = 20.4082
+gravity_scale = 0.01
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="ThighLeft"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.36124, -0.472406, 0.168971 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="ThighLeft/meshes_default"]
+transform = Transform( 4.09095e-08, 0.270372, 0, -0.541863, 2.04125e-08, 0, 0, 0, 0.281311, 0.481547, -0.913274, -0.168971 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="ThighLeft"]
+transform = Transform( 0.541863, 1.65691e-08, 0, 1.65691e-08, 0.162807, 0, 0, 0, 0.153477, 0.552034, 0.00914064, 0 )
+shape = SubResource( 6 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="ThighLeft"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Pelvis")
+angular_limit_y/upper_angle = 40.0
+angular_limit_y/lower_angle = -170.0
+angular_limit_z/upper_angle = 90.0
+angular_limit_z/lower_angle = -90.0
+
+[node name="CalfLeft" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.489522, -3.63206, -0.168971 )
+mass = 20.4082
+gravity_scale = 0.01
+can_sleep = false
+
+[node name="meshes_default" type="Spatial" parent="CalfLeft"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.51514, -0.472406, 0.168971 )
+
+[node name="mesh_emotion3" type="MeshInstance" parent="CalfLeft/meshes_default"]
+transform = Transform( 4.09095e-08, 0.270372, 0, -0.541863, 2.04125e-08, 0, 0, 0, 0.281311, 0.481547, -2.06717, -0.168971 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="CalfLeft"]
+transform = Transform( 0.541863, 1.65691e-08, 0, 1.65691e-08, 0.162807, 0, 0, 0, 0.153477, 0.552034, 0.00914064, 0 )
+shape = SubResource( 6 )
+
+[node name="physJoint" type="Generic6DOFJoint" parent="CalfLeft"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../ThighLeft")
+angular_limit_y/upper_angle = 170.0
+
+[node name="physJointFoot" type="Generic6DOFJoint" parent="CalfLeft"]
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 1.16308, -0.00341463, -0.00710648 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../FootLeftHelper")
+angular_limit_x/enabled = false
+angular_limit_x/upper_angle = 40.0
+angular_limit_x/lower_angle = -40.0
+angular_limit_y/enabled = false
+angular_limit_y/upper_angle = 40.0
+angular_limit_y/lower_angle = -40.0
+angular_limit_z/enabled = false
+angular_limit_z/upper_angle = 40.0
+angular_limit_z/lower_angle = -40.0
+

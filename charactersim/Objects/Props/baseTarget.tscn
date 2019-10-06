@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/Props/baseTarget.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+
+[node name="baseTarget" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="targetPart" type="RigidBody" parent="."]
+transform = Transform( 0.312218, 0, 0, 0, 0.312218, 0, 0, 0, 0.312218, 0, 0, 0 )
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="targetPart"]
+editor/display_folded = true
+shape = SubResource( 1 )
+
+[node name="targetMesh2" type="MeshInstance" parent="targetPart/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="obstacleTestArea" type="Area" parent="targetPart"]
+editor/display_folded = true
+transform = Transform( 6.18472, 0, 0, 0, 9.34477, 0, 0, 0, 9.21966, 0, 0.861816, 0.249003 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="targetPart/obstacleTestArea"]
+shape = SubResource( 3 )
+
+[node name="targetPart2" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 0.312218, 0, 0, 0, 0.312218, 0, 0, 0, 0.312218, -1.14271, 0.533871, 1.98338 )
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="targetPart2"]
+shape = SubResource( 1 )
+
+[node name="targetMesh2" type="MeshInstance" parent="targetPart2/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="targetPart3" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 0.312218, 0, 0, 0, 0.312218, 0, 0, 0, 0.312218, -0.911055, 2.21692, -0.550616 )
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="targetPart3"]
+shape = SubResource( 1 )
+
+[node name="targetMesh2" type="MeshInstance" parent="targetPart3/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="targetPart4" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 0.312218, 0, 0, 0, 0.312218, 0, 0, 0, 0.312218, 1.32335, -1.39795, -1.37933 )
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="targetPart4"]
+shape = SubResource( 1 )
+
+[node name="targetMesh2" type="MeshInstance" parent="targetPart4/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = null
+

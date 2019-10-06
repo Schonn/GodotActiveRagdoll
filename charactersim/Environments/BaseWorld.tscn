@@ -1,0 +1,189 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Environments/BaseWorld.gd" type="Script" id=1]
+[ext_resource path="res://Configurations/MaterialTypes/highFriction.tres" type="PhysicsMaterial" id=2]
+[ext_resource path="res://Objects/Characters/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Props/baseTarget.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Characters/BaseCharacter/baseCharacter.tscn" type="PackedScene" id=5]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="VisualShaderNodeColorOp" id=3]
+default_input_values = [ 0, Vector3( 0.1, 0.1, 0.1 ), 1, Vector3( 0, 0, 0 ) ]
+
+[sub_resource type="VisualShader" id=4]
+code = "shader_type spatial;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorOp:3
+	vec3 n_in3p0 = vec3(0.10000,0.10000,0.10000);
+	vec3 n_in3p1 = vec3(0.00000,0.00000,0.00000);
+	vec3 n_out3p0;
+	n_out3p0=vec3(1.0)-(vec3(1.0)-n_in3p0)*(vec3(1.0)-n_in3p1);
+
+// Output:0
+	ALBEDO = n_out3p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( 0, 88 )
+nodes/fragment/0/position = Vector2( 600, 120 )
+nodes/fragment/3/node = SubResource( 3 )
+nodes/fragment/3/position = Vector2( 40, 160 )
+nodes/fragment/connections = PoolIntArray( 3, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+
+[node name="world" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="RigidBody" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 4.23799, 0, 0, 0, 0.147969, 0, 0, 0, 4.23799, 0, -1.53643, 0 )
+mode = 1
+physics_material_override = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+transform = Transform( 31.9801, 0, 0, 0, 1, 0, 0, 0, 31.9801, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 5 )
+
+[node name="RigidBody2" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5753, 9.74013, 2.69809 )
+mass = 20.4082
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody2"]
+transform = Transform( 1.98485, 0, 0, 0, 5.20492, -1.49012e-08, 0, 0, 1.98485, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody2/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 5 )
+
+[node name="RigidBody3" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.27611, 10.858, -8.56378 )
+mass = 20.4082
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody3"]
+transform = Transform( 1.98485, 0, 0, 0, 5.20492, -1.49012e-08, 0, 0, 1.98485, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody3/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 5 )
+
+[node name="RigidBody4" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95795, 11.522, -14.5191 )
+mass = 20.4082
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody4"]
+transform = Transform( 1.98485, 0, 0, 0, 5.20492, -1.49012e-08, 0, 0, 1.98485, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody4/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 5 )
+
+[node name="RigidBody5" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4507, 11.5183, 12.2262 )
+mass = 20.4082
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody5"]
+transform = Transform( 1.98485, 0, 0, 0, 5.20492, -1.49012e-08, 0, 0, 1.98485, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody5/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 5 )
+
+[node name="RigidBody6" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1161, 11.5194, 5.68041 )
+mass = 20.4082
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody6"]
+transform = Transform( 1.98485, 0, 0, 0, 5.20492, -1.49012e-08, 0, 0, 1.98485, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody6/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 5 )
+
+[node name="RigidBody7" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29186, 11.5173, 17.1006 )
+mass = 20.4082
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody7"]
+transform = Transform( 1.98485, 0, 0, 0, 5.20492, -1.49012e-08, 0, 0, 1.98485, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody7/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 5 )
+
+[node name="RigidBody8" type="RigidBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25014, 11.5236, -3.94286 )
+mass = 20.4082
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody8"]
+transform = Transform( 1.98485, 0, 0, 0, 5.20492, -1.49012e-08, 0, 0, 1.98485, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody8/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08966, 4.13816, 10.1568 )
+
+[node name="baseTarget" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7031, 4.41538, -0.669537 )
+
+[node name="baseTarget2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.589, 4.41538, -20.83 )
+
+[node name="baseTarget3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6528, 4.41538, 25.1088 )
+
+[node name="baseTarget4" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8786, 4.41538, 28.6821 )
+
+[node name="BaseCharacter" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99121, 12.8067, 3.27417 )
+
+[node name="BaseCharacter2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2924, 12.8114, 5.65917 )
+
+[node name="BaseCharacter3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3086, 12.8015, 23.4602 )
+
+[node name="BaseCharacter4" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7022, 12.8273, -8.129 )
+
+[node name="BaseCharacter5" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2348, 12.8132, -22.4748 )
+

@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/Characters/Player/Player.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[node name="Player" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+
+[node name="grabRay" type="RayCast" parent="Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -50 )
+
+[node name="physicsConnector" type="RigidBody" parent="Camera/grabRay"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.991594 )
+input_ray_pickable = false
+collision_layer = 0
+collision_mask = 0
+mode = 1
+mass = 510.204
+gravity_scale = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Camera/grabRay/physicsConnector"]
+transform = Transform( 0.204564, 0, 0, 0, 0.204564, 0, 0, 0, 0.204564, 0, 0, 0 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="playerDragJoint" type="Generic6DOFJoint" parent="Camera/grabRay/physicsConnector"]
+nodes/node_a = NodePath("..")
+
+[node name="mouseLocationHelper" type="Position3D" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+
+[node name="mouseHelperEnd" type="Position3D" parent="Camera/mouseLocationHelper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Camera/mouseLocationHelper/mouseHelperEnd"]
+transform = Transform( 1.0117, 0, 0, 0, 1.0117, 0, 0, 0, 1.0117, 0, 0, 0 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = null
+
