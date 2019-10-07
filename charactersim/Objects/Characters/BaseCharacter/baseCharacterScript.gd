@@ -357,8 +357,8 @@ func _ready():
 													["meshSwapType","attachSwap"],
 													["meshCollectionName","meshes_default"]
 												],
-								"meshSwapExpression":[ 
-													["meshSwapType","expressiveSwap"],
+								"meshSwapExpressionBlinking":[ 
+													["meshSwapType","expressiveSwapBlink"],
 													["meshCollectionName","meshes_default"]
 												]
 								}
@@ -369,7 +369,7 @@ func _ready():
 										self.get_node("Head"),quickActionLoadouts["yawAimPart"]
 									],
 									[
-										self.get_node("Head"),quickActionLoadouts["meshSwapExpression"]
+										self.get_node("Head"),quickActionLoadouts["meshSwapExpressionBlinking"]
 									],
 									[ 
 										self.get_node("Neck"),quickActionLoadouts["pitchAimPart"]
