@@ -223,6 +223,9 @@ func _dynamicAttachmentUpdate(attachJoint,attachTriggerRay,attachingPart,freezeM
 							freezingPartPhysJoint.set("linear_limit_" + movementAxes[movementAxis] + "/enabled",false)
 							freezingPartPhysJoint.set("angular_limit_" + movementAxes[movementAxis] + "/enabled",false)
 						attachingPart.set_meta("attachTime",passiveAttachTimeMax) #a different attach time may be needed in this passive attach mode
+						#reduce the attach time further if it's static
+						if(attachObject.get("mode") == 1):
+							attachingPart.set_meta("attachTime",attachingPart.get_meta("attachTime")*0.1)
 					freezingPart.set_meta("moveFreeze",freezeMovement) #freeze the path following of an object if needed
 					attachJoint.set("nodes/node_b",attachObject.get_path())
 					attachJoint.set_meta("currentAttachedObject",attachObject) #keep a reference to the object itself for clearing constraint later
@@ -250,6 +253,23 @@ func _animateMeshSwap(meshCollectionNodeName,swappingPart,isAttachingMesh,meshSw
 			if(meshSwapType == "expressiveMesh"): #meshes which change according to emotion value
 				if(meshCollectionNode.has_node("mesh_emotion" + str(emotionValue))): 
 					self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node("mesh_emotion" + str(emotionValue)))
+			if(meshSwapType == "expressiveMeshBlinking"): #meshes which change according to emotion value and randomly 'blink'
+				var swapMeshName = "mesh_emotion" + str(emotionValue) #include blinking
+				if not (swappingPart.has_meta("meshBlinkDelayTime") and swappingPart.has_meta("meshBlinkOnTime")):
+					swappingPart.set_meta("meshBlinkDelayTime",500) #set up blink meta values if not already set up
+					swappingPart.set_meta("meshBlinkOnTime",10)
+				if(swappingPart.get_meta("meshBlinkDelayTime") == 0): #if the delay has passed between blinks, switch mesh to blinking version
+					swapMeshName = "mesh_emotion" + str(emotionValue) + "_blink"
+					if(swappingPart.get_meta("meshBlinkOnTime") == 0): #if the delay for keeping the blink on has passed, return to non blinking and start timers again
+						swapMeshName = "mesh_emotion" + str(emotionValue)
+						swappingPart.set_meta("meshBlinkDelayTime",int(rand_range(10,500)))
+						swappingPart.set_meta("meshBlinkOnTime",int(rand_range(5,10)))
+					else: #decrement blinking on timer
+						swappingPart.set_meta("meshBlinkOnTime",swappingPart.get_meta("meshBlinkOnTime")-1)
+				else: #decrement time between blinks timer
+					swappingPart.set_meta("meshBlinkDelayTime",swappingPart.get_meta("meshBlinkDelayTime")-1)
+				if(meshCollectionNode.has_node(swapMeshName)):  #apply chosen mesh, blinking or unblinking
+					self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node(swapMeshName))	
 			elif(meshSwapType == "randomInitialMesh"):
 				if not (swappingPart.has_meta("isInitialMeshChosen")):
 					swappingPart.set_meta("isInitialMeshChosen",false)
@@ -582,6 +602,13 @@ func _physics_process(delta):
 												movingPart,
 												false,
 												"expressiveMesh",
+												currentObject.emotionValue)
+					#mesh swap for emotion numbers with blink
+					elif(movingPart.get_meta("meshSwapType") == "expressiveSwapBlink"):
+						self._animateMeshSwap(movingPart.get_meta("meshCollectionName"),
+												movingPart,
+												false,
+												"expressiveMeshBlinking",
 												currentObject.emotionValue)
 					#mesh swap for picking a random initial mesh once only
 					elif(movingPart.get_meta("meshSwapType") == "randomInitialSwap"):
