@@ -360,17 +360,18 @@ func _ready():
 													["reattachDelayMax",500]
 												],
 								"meshSwapAttach":[ 
-													["meshSwapType","attachSwap"]
+													["meshSwapType","attachMesh"]
 												],
 								"meshSwapExpressionBlinking":[ 
-													["meshSwapType","expressiveSwapBlink"]
+													["meshSwapType","expressiveMeshBlinking"]
 												],
 								"meshSwapStartRandom":[ 
-													["meshSwapType","randomInitialSwap"]
+													["meshSwapType","randomInitialMesh"]
 												],
 								"meshSwapWave":[ 
 													["meshSwapType","specificMesh"],
-													["specificMeshObject",self.get_node("HandLeft/meshes_default/mesh_wave")]
+													["specificMeshObject",self.get_node("HandLeft/meshes_default/mesh_wave")],
+													["specificMeshDisplayTimeMax",400]
 												]
 								}
 	
