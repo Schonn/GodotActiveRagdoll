@@ -44,16 +44,28 @@
 [sub_resource type="BoxShape" id=20]
 
 [node name="BaseCharacter" type="Spatial"]
-editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="Head" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.600722, -0.122685 )
 mass = 510.204
 can_sleep = false
 
+[node name="meshes_startrandom" type="Spatial" parent="Head"]
+editor/display_folded = true
+
+[node name="mesh_random1" type="MeshInstance" parent="Head/meshes_startrandom"]
+transform = Transform( 0.147114, 0, 0, 0, 0.482974, -0.00385613, 0, 0.0129694, 0.1436, 4.72311e-12, 1.10155, 0.0241228 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="mesh_random2" type="MeshInstance" parent="Head/meshes_startrandom"]
+transform = Transform( 0.00128888, 0.48313, 2.34424e-12, -0.147055, 0.0042314, -0.00385613, -0.0039489, 0.000113627, 0.1436, 4.72311e-12, 1.10155, 0.0241228 )
+mesh = SubResource( 1 )
+material/0 = null
+
 [node name="meshes_default" type="Spatial" parent="Head"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0315542 )
 
 [node name="mesh_emotion3" type="MeshInstance" parent="Head/meshes_default"]
@@ -546,7 +558,6 @@ linear_limit_z/softness = 0.01
 linear_limit_z/restitution = 0.01
 
 [node name="HandLeft" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.46896, -0.279858, -0.248046 )
 mass = 20.4082
 gravity_scale = 0.0
@@ -562,6 +573,11 @@ material/0 = null
 
 [node name="mesh_unattached" type="MeshInstance" parent="HandLeft/meshes_default"]
 transform = Transform( 0.704726, 0, 0, 0, 0.218099, 0, 0, 0, 0.436211, 4.21777, 1.83706, -0.304131 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="mesh_wave" type="MeshInstance" parent="HandLeft/meshes_default"]
+transform = Transform( 0.359879, 0, 0, 0, 0.218099, 0, 0, 0, 0.794244, 3.80786, 1.83706, -0.304131 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -716,6 +732,7 @@ linear_limit_z/softness = 0.01
 linear_limit_z/restitution = 0.01
 
 [node name="HandRight" type="RigidBody" parent="."]
+editor/display_folded = true
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.50755, -0.326456, -0.302268 )
 mass = 20.4082
 gravity_scale = 0.0

@@ -26,10 +26,11 @@ var moveCycleDefinitions = null
 
 #regarding distances to focused object for movement and distance actions
 var targetDistance = null
-var targetDistanceMaxCloseness = null
+var targetDistanceMaxCloseness = null #the closest a target can be
 var targetDistanceReference = null
 var distanceActionTime = null
 var distanceActionTimeMax = null
+var targetDistanceLimit = null #the furthest a target can be
 
 #area object for detecting distances to targets or obstructions
 var obstacleArea = null
@@ -135,6 +136,7 @@ func _ready():
 	#node for comparing distances between this object and others
 	self.targetDistanceReference = self.get_node("Pelvis")
 	self.targetDistanceMaxCloseness = 8
+	self.targetDistanceLimit = 20
 	
 	#obstacle avoidance
 	self.blockedReverseTimeMax = 200
@@ -151,7 +153,11 @@ func _ready():
 							self.get_node("FootRightHelper"),
 							self.get_node("GyroBottom"),
 							self.get_node("HandLeft"),
-							self.get_node("HandRight")]
+							self.get_node("HandRight"),
+							self.get_node("Head/meshes_default"),
+							self.get_node("Head/meshes_startrandom"),
+							self.get_node("HandLeft/meshes_default"),
+							self.get_node("HandRight/meshes_default")]
 	#list of parts for use by other objects
 	self.focusPartList = [self.get_node("Head"),
 							self.get_node("Neck"),
@@ -354,12 +360,17 @@ func _ready():
 													["reattachDelayMax",500]
 												],
 								"meshSwapAttach":[ 
-													["meshSwapType","attachSwap"],
-													["meshCollectionName","meshes_default"]
+													["meshSwapType","attachSwap"]
 												],
 								"meshSwapExpressionBlinking":[ 
-													["meshSwapType","expressiveSwapBlink"],
-													["meshCollectionName","meshes_default"]
+													["meshSwapType","expressiveSwapBlink"]
+												],
+								"meshSwapStartRandom":[ 
+													["meshSwapType","randomInitialSwap"]
+												],
+								"meshSwapWave":[ 
+													["meshSwapType","specificMesh"],
+													["specificMeshObject",self.get_node("HandLeft/meshes_default/mesh_wave")]
 												]
 								}
 	
@@ -369,7 +380,10 @@ func _ready():
 										self.get_node("Head"),quickActionLoadouts["yawAimPart"]
 									],
 									[
-										self.get_node("Head"),quickActionLoadouts["meshSwapExpressionBlinking"]
+										self.get_node("Head/meshes_default"),quickActionLoadouts["meshSwapExpressionBlinking"]
+									],
+									[
+										self.get_node("Head/meshes_startrandom"),quickActionLoadouts["meshSwapStartRandom"]
 									],
 									[ 
 										self.get_node("Neck"),quickActionLoadouts["pitchAimPart"]
@@ -387,10 +401,22 @@ func _ready():
 										self.get_node("HandLeft"),quickActionLoadouts["attachFreeze"]
 									],
 									[ 
-										self.get_node("HandRight"),quickActionLoadouts["meshSwapAttach"]
+										self.get_node("HandRight/meshes_default"),quickActionLoadouts["meshSwapAttach"]
 									],
 									[ 
-										self.get_node("HandLeft"),quickActionLoadouts["meshSwapAttach"]
+										self.get_node("HandLeft/meshes_default"),quickActionLoadouts["meshSwapAttach"]
+									],
+									[ 
+										self.get_node("FootLeftHelper"),quickActionLoadouts["standIdleLimbs"]
+									],
+									[ 
+										self.get_node("FootRightHelper"),quickActionLoadouts["standIdleLimbs"]
+									],
+									[ 
+										self.get_node("HandRightHelper"),quickActionLoadouts["standIdleLimbs"]
+									],
+									[ 
+										self.get_node("HandLeftHelper"),quickActionLoadouts["standIdleLimbs"]
 									]
 								]
 	
@@ -482,6 +508,9 @@ func _ready():
 											],
 											[ 
 												"farWave",self.get_node("HandLeftHelper"),500,quickActionLoadouts["farWaveArms"]
+											],
+											[ 
+												"farWave",self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapWave"]
 											]
 										]
 									]
