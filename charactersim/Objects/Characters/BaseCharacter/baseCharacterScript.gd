@@ -136,7 +136,7 @@ func _ready():
 	#node for comparing distances between this object and others
 	self.targetDistanceReference = self.get_node("Pelvis")
 	self.targetDistanceMaxCloseness = 8
-	self.targetDistanceLimit = 20
+	self.targetDistanceLimit = 50
 	
 	#obstacle avoidance
 	self.blockedReverseTimeMax = 200
@@ -370,8 +370,7 @@ func _ready():
 												],
 								"meshSwapWave":[ 
 													["meshSwapType","specificMesh"],
-													["specificMeshObject",self.get_node("HandLeft/meshes_default/mesh_wave")],
-													["specificMeshDisplayTimeMax",400]
+													["specificMeshObject",self.get_node("HandLeft/meshes_default/mesh_wave")]
 												]
 								}
 	
@@ -437,6 +436,9 @@ func _ready():
 											],
 											[ 
 												"walkNormal",self.get_node("HandLeftHelper"),500,quickActionLoadouts["walkNormalLimbs"]
+											],
+											[ 
+												"walkNormal",self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
 											]
 										],
 										[ #random variant 1 of action
@@ -451,6 +453,9 @@ func _ready():
 											],
 											[ 
 												"walkStrafeLeft",self.get_node("HandLeftHelper"),500,quickActionLoadouts["walkStrafeLeftLimbs"]
+											],
+											[ 
+												"walkStrafeLeft",self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
 											]
 										],
 										[ #random variant 2 of action
@@ -465,6 +470,9 @@ func _ready():
 											],
 											[ 
 												"walkStrafeRight",self.get_node("HandLeftHelper"),500,quickActionLoadouts["walkStrafeRightLimbs"]
+											],
+											[ 
+												"walkStrafeRight",self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
 											]
 										]
 									]
@@ -487,6 +495,9 @@ func _ready():
 											],
 											[ 
 												"standIdle",self.get_node("HandLeftHelper"),500,quickActionLoadouts["standIdleLimbs"]
+											],
+											[ 
+												"standIdle",self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
 											]
 										]
 									]
