@@ -242,27 +242,27 @@ func _meshVisibilitySwap(swappingPart,newVisibleMesh):
 	swappingPart.set_meta("currentDisplayedMesh",newVisibleMesh)
 
 #animate mesh changes using mesh visibility
-func _animateMeshSwap(swappingPart,meshSwapType,emotionValue,specificMeshObject,specificMeshSwapDuration):
+func _animateMeshSwap(swappingPart,meshSwapType,emotionValue,specificMeshObject):
 	var isAttachingMesh = false #handle attaching mesh variations
 	if (meshSwapType == "attachMesh" or meshSwapType == "expressiveMeshAttach"):
 		isAttachingMesh = true
 	if (meshSwapType == "expressiveMeshAttach"): #handle expressive mesh and attaching expressive mesh similarly
 		meshSwapType = "expressiveMesh"
-	var meshCollectionNode = swappingPart
-	if(meshCollectionNode.get_children() != []): #if there are meshes there
+	if(swappingPart.get_children() != []): #if there are meshes there
 		if not (swappingPart.has_meta("currentDisplayedMesh")): #make attachments last a finite time
-			for meshToHide in meshCollectionNode.get_children():
+			for meshToHide in swappingPart.get_children():
 				meshToHide.set_visible(false)
-			swappingPart.set_meta("currentDisplayedMesh",meshCollectionNode.get_children()[0])
+			swappingPart.set_meta("currentDisplayedMesh",swappingPart.get_children()[0])
+			swappingPart.get_children()[0].set_visible(true)
 		if not (swappingPart.has_meta("previousMeshSwapType")): #for reverting from specific mesh swaps to automatic ones
 			swappingPart.set_meta("previousMeshSwapType","NONE")
-			swappingPart.set_meta("previousMeshObject","NONE")
+			swappingPart.set_meta("previousMeshObject",null)
 		if(meshSwapType != "specificMesh" and swappingPart.get_meta("previousMeshSwapType") != meshSwapType): 
 			swappingPart.set_meta("previousMeshSwapType",meshSwapType)
 			swappingPart.set_meta("previousMeshObject",swappingPart.get_meta("currentDisplayedMesh"))
 		if(meshSwapType == "expressiveMesh"): #meshes which change according to emotion value
-			if(meshCollectionNode.has_node("mesh_emotion" + str(emotionValue))): 
-				self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node("mesh_emotion" + str(emotionValue)))
+			if(swappingPart.has_node("mesh_emotion" + str(emotionValue))): 
+				self._meshVisibilitySwap(swappingPart,swappingPart.get_node("mesh_emotion" + str(emotionValue)))
 		if(meshSwapType == "expressiveMeshBlinking"): #meshes which change according to emotion value and randomly 'blink'
 			var swapMeshName = "mesh_emotion" + str(emotionValue) #include blinking
 			if not (swappingPart.has_meta("meshBlinkDelayTime") and swappingPart.has_meta("meshBlinkOnTime")):
@@ -278,44 +278,36 @@ func _animateMeshSwap(swappingPart,meshSwapType,emotionValue,specificMeshObject,
 					swappingPart.set_meta("meshBlinkOnTime",swappingPart.get_meta("meshBlinkOnTime")-1)
 			else: #decrement time between blinks timer
 				swappingPart.set_meta("meshBlinkDelayTime",swappingPart.get_meta("meshBlinkDelayTime")-1)
-			if(meshCollectionNode.has_node(swapMeshName)):  #apply chosen mesh, blinking or unblinking
-				self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node(swapMeshName))	
+			if(swappingPart.has_node(swapMeshName)):  #apply chosen mesh, blinking or unblinking
+				if(swappingPart.get_meta("previousMeshObject") != swappingPart.get_node(swapMeshName)):
+					self._meshVisibilitySwap(swappingPart,swappingPart.get_node(swapMeshName))	
+					swappingPart.set_meta("previousMeshObject",swappingPart.get_node(swapMeshName))
 		elif(meshSwapType == "randomInitialMesh"):
 			if not (swappingPart.has_meta("isInitialMeshChosen")):
 				swappingPart.set_meta("isInitialMeshChosen",false)
 			if(swappingPart.get_meta("isInitialMeshChosen") == false):
-				for meshToHide in meshCollectionNode.get_children():
+				for meshToHide in swappingPart.get_children():
 					meshToHide.set_visible(false)
-				var pickedRandomMesh = meshCollectionNode.get_children()[randi() % meshCollectionNode.get_children().size()]
+				var pickedRandomMesh = swappingPart.get_children()[randi() % swappingPart.get_children().size()]
 				self._meshVisibilitySwap(swappingPart,pickedRandomMesh)
 				swappingPart.set_meta("isInitialMeshChosen",true)
 		elif(meshSwapType == "specificMesh"): #switch to a specific mesh
-			if not (swappingPart.has_meta("specificMeshName")): #set up meta tags if they do not exist
-				swappingPart.set_meta("specificMeshName","NONE")
-				swappingPart.set_meta("specificMeshVisibleTimer",specificMeshSwapDuration)
 			if(specificMeshObject != null):
-					if(swappingPart.get_meta("specificMeshName") != specificMeshObject.name):
-						swappingPart.set_meta("specificMeshVisibleTimer",specificMeshSwapDuration)
-						self._meshVisibilitySwap(swappingPart,specificMeshObject)
-						swappingPart.set_meta("specificMeshName",specificMeshObject.name)
-			if(swappingPart.get_meta("specificMeshVisibleTimer") == 0):
-				print("reached timer zero, changing swap type back to " + swappingPart.get_meta("previousMeshSwapType"))
-				swappingPart.set_meta("meshSwapType",swappingPart.get_meta("previousMeshSwapType"))
-				self._meshVisibilitySwap(swappingPart,swappingPart.get_meta("previousMeshObject"))
-			else:
-				swappingPart.set_meta("specificMeshVisibleTimer",swappingPart.get_meta("specificMeshVisibleTimer")-1)
-				
+				if(swappingPart.get_meta("previousMeshObject") != specificMeshObject):
+					self._meshVisibilitySwap(swappingPart,specificMeshObject)
+					swappingPart.set_meta("previousMeshObject",specificMeshObject)
+
 		#swap to an attached mesh when the mesh attaches to something, 
 		#overrides other mesh swaps when enabled
 		if(isAttachingMesh == true): 
 			if not (swappingPart.get_parent().has_meta("isAttached")):
 				swappingPart.get_parent().set_meta("isAttached",false)
 			if(swappingPart.get_parent().get_meta("isAttached") == true):
-				if(meshCollectionNode.has_node("mesh_attached")):
-					self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node("mesh_attached"))
+				if(swappingPart.has_node("mesh_attached")):
+					self._meshVisibilitySwap(swappingPart,swappingPart.get_node("mesh_attached"))
 			elif(meshSwapType == "attachMesh"): #if the mesh swap is for attach only, revert to neutral pose when not attached
-				if(meshCollectionNode.has_node("mesh_unattached")): 
-					self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node("mesh_unattached"))
+				if(swappingPart.has_node("mesh_unattached")): 
+					self._meshVisibilitySwap(swappingPart,swappingPart.get_node("mesh_unattached"))
 		
 
 #get an action suitable for the a specific character state
@@ -611,49 +603,43 @@ func _physics_process(delta):
 				#MESH SWAPPING METHODS
 				
 				if(movingPart.has_meta("meshSwapType")):
+					
 					#swap mesh in response to an attachment
 					if(movingPart.get_meta("meshSwapType") == "attachMesh"):
 						self._animateMeshSwap(movingPart,
 												movingPart.get_meta("meshSwapType"),
 												currentObject.emotionValue,
-												null,
 												null)
 					#mesh swap for emotion numbers which falls back to attach swap when attached
 					elif(movingPart.get_meta("meshSwapType") == "expressiveMeshAttach"):
 						self._animateMeshSwap(movingPart,
 												movingPart.get_meta("meshSwapType"),
 												currentObject.emotionValue,
-												null,
 												null)
 					#mesh swap for emotion numbers
 					elif(movingPart.get_meta("meshSwapType") == "expressiveMesh"):
 						self._animateMeshSwap(movingPart,
 												movingPart.get_meta("meshSwapType"),
 												currentObject.emotionValue,
-												null,
 												null)
 					#mesh swap for emotion numbers with blink
 					elif(movingPart.get_meta("meshSwapType") == "expressiveMeshBlinking"):
 						self._animateMeshSwap(movingPart,
 												movingPart.get_meta("meshSwapType"),
 												currentObject.emotionValue,
-												null,
 												null)
 					#mesh swap for picking a random initial mesh once only
 					elif(movingPart.get_meta("meshSwapType") == "randomInitialMesh"):
 						self._animateMeshSwap(movingPart,
 												movingPart.get_meta("meshSwapType"),
 												currentObject.emotionValue,
-												null,
 												null)
-					
 					#mesh swap for picking a specific mesh
 					elif(movingPart.get_meta("meshSwapType") == "specificMesh"):
 						self._animateMeshSwap(movingPart,
 												movingPart.get_meta("meshSwapType"),
 												currentObject.emotionValue,
-												movingPart.get_meta("specificMeshObject"),
-												movingPart.get_meta("specificMeshDisplayTimeMax"))
+												movingPart.get_meta("specificMeshObject"))
 
 		
 		self.sceneScanIterateCompare = self._iterateScanner(self.sceneScanIterateCompare,len(self.get_children())-1)
