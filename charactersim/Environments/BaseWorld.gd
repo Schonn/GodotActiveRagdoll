@@ -242,54 +242,64 @@ func _meshVisibilitySwap(swappingPart,newVisibleMesh):
 	swappingPart.set_meta("currentDisplayedMesh",newVisibleMesh)
 
 #animate mesh changes using mesh visibility
-func _animateMeshSwap(meshCollectionNodeName,swappingPart,isAttachingMesh,meshSwapType,emotionValue):
-	if(swappingPart.has_node(meshCollectionNodeName)): #different mesh collections can be used as 'skins' based on context
-		var meshCollectionNode = swappingPart.get_node(meshCollectionNodeName) #node containing specifically labeled mesh nodes
-		if(meshCollectionNode.get_children() != []): #if there are meshes there
-			if not (swappingPart.has_meta("currentDisplayedMesh")): #make attachments last a finite time
+func _animateMeshSwap(swappingPart,isAttachingMesh,meshSwapType,emotionValue,specificMeshObject):
+	var meshCollectionNode = swappingPart
+	if(meshCollectionNode.get_children() != []): #if there are meshes there
+		if not (swappingPart.has_meta("currentDisplayedMesh")): #make attachments last a finite time
+			for meshToHide in meshCollectionNode.get_children():
+				meshToHide.set_visible(false)
+			swappingPart.set_meta("currentDisplayedMesh",meshCollectionNode.get_children()[0])
+		if(meshSwapType == "expressiveMesh"): #meshes which change according to emotion value
+			if(meshCollectionNode.has_node("mesh_emotion" + str(emotionValue))): 
+				self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node("mesh_emotion" + str(emotionValue)))
+		if(meshSwapType == "expressiveMeshBlinking"): #meshes which change according to emotion value and randomly 'blink'
+			var swapMeshName = "mesh_emotion" + str(emotionValue) #include blinking
+			if not (swappingPart.has_meta("meshBlinkDelayTime") and swappingPart.has_meta("meshBlinkOnTime")):
+				swappingPart.set_meta("meshBlinkDelayTime",500) #set up blink meta values if not already set up
+				swappingPart.set_meta("meshBlinkOnTime",10)
+			if(swappingPart.get_meta("meshBlinkDelayTime") == 0): #if the delay has passed between blinks, switch mesh to blinking version
+				swapMeshName = "mesh_emotion" + str(emotionValue) + "_blink"
+				if(swappingPart.get_meta("meshBlinkOnTime") == 0): #if the delay for keeping the blink on has passed, return to non blinking and start timers again
+					swapMeshName = "mesh_emotion" + str(emotionValue)
+					swappingPart.set_meta("meshBlinkDelayTime",int(rand_range(10,500)))
+					swappingPart.set_meta("meshBlinkOnTime",int(rand_range(5,10)))
+				else: #decrement blinking on timer
+					swappingPart.set_meta("meshBlinkOnTime",swappingPart.get_meta("meshBlinkOnTime")-1)
+			else: #decrement time between blinks timer
+				swappingPart.set_meta("meshBlinkDelayTime",swappingPart.get_meta("meshBlinkDelayTime")-1)
+			if(meshCollectionNode.has_node(swapMeshName)):  #apply chosen mesh, blinking or unblinking
+				self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node(swapMeshName))	
+		elif(meshSwapType == "randomInitialMesh"):
+			if not (swappingPart.has_meta("isInitialMeshChosen")):
+				swappingPart.set_meta("isInitialMeshChosen",false)
+			if(swappingPart.get_meta("isInitialMeshChosen") == false):
 				for meshToHide in meshCollectionNode.get_children():
 					meshToHide.set_visible(false)
-				swappingPart.set_meta("currentDisplayedMesh",meshCollectionNode.get_children()[0])
-			if(meshSwapType == "expressiveMesh"): #meshes which change according to emotion value
-				if(meshCollectionNode.has_node("mesh_emotion" + str(emotionValue))): 
-					self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node("mesh_emotion" + str(emotionValue)))
-			if(meshSwapType == "expressiveMeshBlinking"): #meshes which change according to emotion value and randomly 'blink'
-				var swapMeshName = "mesh_emotion" + str(emotionValue) #include blinking
-				if not (swappingPart.has_meta("meshBlinkDelayTime") and swappingPart.has_meta("meshBlinkOnTime")):
-					swappingPart.set_meta("meshBlinkDelayTime",500) #set up blink meta values if not already set up
-					swappingPart.set_meta("meshBlinkOnTime",10)
-				if(swappingPart.get_meta("meshBlinkDelayTime") == 0): #if the delay has passed between blinks, switch mesh to blinking version
-					swapMeshName = "mesh_emotion" + str(emotionValue) + "_blink"
-					if(swappingPart.get_meta("meshBlinkOnTime") == 0): #if the delay for keeping the blink on has passed, return to non blinking and start timers again
-						swapMeshName = "mesh_emotion" + str(emotionValue)
-						swappingPart.set_meta("meshBlinkDelayTime",int(rand_range(10,500)))
-						swappingPart.set_meta("meshBlinkOnTime",int(rand_range(5,10)))
-					else: #decrement blinking on timer
-						swappingPart.set_meta("meshBlinkOnTime",swappingPart.get_meta("meshBlinkOnTime")-1)
-				else: #decrement time between blinks timer
-					swappingPart.set_meta("meshBlinkDelayTime",swappingPart.get_meta("meshBlinkDelayTime")-1)
-				if(meshCollectionNode.has_node(swapMeshName)):  #apply chosen mesh, blinking or unblinking
-					self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node(swapMeshName))	
-			elif(meshSwapType == "randomInitialMesh"):
-				if not (swappingPart.has_meta("isInitialMeshChosen")):
-					swappingPart.set_meta("isInitialMeshChosen",false)
-				if(swappingPart.get_meta("isInitialMeshChosen") == false):
+				var pickedRandomMesh = meshCollectionNode.get_children()[randi() % meshCollectionNode.get_children().size()]
+				self._meshVisibilitySwap(swappingPart,pickedRandomMesh)
+				swappingPart.set_meta("isInitialMeshChosen",true)
+		elif(meshSwapType == "specificMesh"): #switch to a specific mesh
+			if not (swappingPart.has_meta("specificMeshName")):
+				swappingPart.set_meta("specificMeshName","NONE")
+			if(specificMeshObject != null):
+				if(swappingPart.get_meta("specificMeshName") != specificMeshObject.name):
 					for meshToHide in meshCollectionNode.get_children():
-						meshToHide.set_visible(false)
-					var pickedRandomMesh = meshCollectionNode.get_children()[randi() % meshCollectionNode.get_children().size()]
-					self._meshVisibilitySwap(swappingPart,pickedRandomMesh)
-					swappingPart.set_meta("isInitialMeshChosen",true)
-			#swap to an attached mesh when the mesh attaches to something, 
-			#overrides other mesh swaps when enabled
-			if(isAttachingMesh == true): 
-				if not (swappingPart.has_meta("isAttached")):
-					swappingPart.set_meta("isAttached",false)
-				if(swappingPart.get_meta("isAttached") == true):
-					if(meshCollectionNode.has_node("mesh_attached")):
-						self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node("mesh_attached"))
-				elif(meshSwapType == "attachMesh"): #if the mesh swap is for attach only, revert to neutral pose when not attached
-					if(meshCollectionNode.has_node("mesh_unattached")): 
-						self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node("mesh_unattached"))
+						if(meshToHide.name == specificMeshObject.name):
+							meshToHide.set_visible(true)
+						else:
+							meshToHide.set_visible(false)
+					swappingPart.set_meta("specificMeshName",specificMeshObject.name)
+		#swap to an attached mesh when the mesh attaches to something, 
+		#overrides other mesh swaps when enabled
+		if(isAttachingMesh == true): 
+			if not (swappingPart.get_parent().has_meta("isAttached")):
+				swappingPart.get_parent().set_meta("isAttached",false)
+			if(swappingPart.get_parent().get_meta("isAttached") == true):
+				if(meshCollectionNode.has_node("mesh_attached")):
+					self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node("mesh_attached"))
+			elif(meshSwapType == "attachMesh"): #if the mesh swap is for attach only, revert to neutral pose when not attached
+				if(meshCollectionNode.has_node("mesh_unattached")): 
+					self._meshVisibilitySwap(swappingPart,meshCollectionNode.get_node("mesh_unattached"))
 		
 
 #get an action suitable for the a specific character state
@@ -341,37 +351,40 @@ func _updateResponseAction(currentObject,focusSubTarget,responseDictionary,respo
 func _physics_process(delta):
 	#object for performing comparisons
 	var currentCompareObject = self.get_children()[sceneScanIterate]
+	
 	#second scan to compare scene objects
 	var randomSceneRangeMax = int(rand_range(1,50))
 	if(randomSceneRangeMax > len(self.get_children())):
 			randomSceneRangeMax = len(self.get_children())
 	for sceneObjectNumber in range(0,randomSceneRangeMax):
 		var currentObject = self.get_children()[sceneObjectNumber]
-		#set a focus on a new object if the focus time for an old object has run out
-		if("focusTarget" in currentObject and "focusTime" in currentObject):
-			#if the current focus object has been looked at enough, it isnt the self object and it has some inner parts to focus on, focus on it
-			if(currentObject.focusTime <= 0 and currentCompareObject != currentObject and "focusPartList" in currentCompareObject and "obstacleArea" in currentCompareObject):
-				currentObject.focusTarget = currentCompareObject
-				currentObject.focusTime = int(rand_range(currentObject.focusTimeMax*0.3,currentObject.focusTimeMax))
-				print("switched " + currentObject.name + " focus to " + currentObject.focusTarget.name)
-				currentObject.focusSubTime = -1 #switching focus needs to reset the sub focus
+		#set a focus on a new object if the focus time for an old object has run out and the object is close enough
+		if("targetDistanceLimit" in currentObject and "targetDistanceReference" in currentObject):
+			if(self._getDistance(currentCompareObject,currentObject.targetDistanceReference) < currentObject.targetDistanceLimit):
+				if("focusTarget" in currentObject and "focusTime" in currentObject):
+					#if the current focus object has been looked at enough, it isnt the self object and it has some inner parts to focus on, focus on it
+					if(currentObject.focusTime <= 0 and currentCompareObject != currentObject and "focusPartList" in currentCompareObject and "obstacleArea" in currentCompareObject):
+						currentObject.focusTarget = currentCompareObject
+						currentObject.focusTime = int(rand_range(currentObject.focusTimeMax*0.3,currentObject.focusTimeMax))
+						print("switched " + currentObject.name + " focus to " + currentObject.focusTarget.name)
+						currentObject.focusSubTime = -1 #switching focus needs to reset the sub focus
+					else:
+						currentObject.focusTime -= 1
+		#change emotion value depending on target object
+		if("emotionValue" in currentObject and "traitPerceptions" in currentObject and currentObject.focusTarget != null and "emotionChangeCounter" in currentObject and "emotionCounterMax" in currentObject):
+			if(currentObject.emotionChangeCounter == 0):
+				if("characterTraits" in currentObject.focusTarget):
+					var newEmotionValue = 3 
+					for otherCharacterTrait in currentObject.focusTarget.characterTraits:
+						#multiply the amount by which the other character has a certain trait
+						#by the amount by which this character likes or dislikes that trait
+						#and add it (or subtract it if negative) to the emotion value which defaults at 3 (neutral)
+						newEmotionValue = newEmotionValue + (currentObject.traitPerceptions[otherCharacterTrait[0]] * otherCharacterTrait[1])
+					currentObject.emotionValue = clamp(round(newEmotionValue),0,6) #round value
+					print(currentObject.name + " changed emotion to " + str(currentObject.emotionValue) + " because of seeing " + currentObject.focusTarget.name)
+				currentObject.emotionChangeCounter = currentObject.emotionCounterMax
 			else:
-				currentObject.focusTime -= 1
-			#change emotion value depending on target object
-			if("emotionValue" in currentObject and "traitPerceptions" in currentObject and currentObject.focusTarget != null and "emotionChangeCounter" in currentObject and "emotionCounterMax" in currentObject):
-				if(currentObject.emotionChangeCounter == 0):
-					if("characterTraits" in currentObject.focusTarget):
-						var newEmotionValue = 3 
-						for otherCharacterTrait in currentObject.focusTarget.characterTraits:
-							#multiply the amount by which the other character has a certain trait
-							#by the amount by which this character likes or dislikes that trait
-							#and add it (or subtract it if negative) to the emotion value which defaults at 3 (neutral)
-							newEmotionValue = newEmotionValue + (currentObject.traitPerceptions[otherCharacterTrait[0]] * otherCharacterTrait[1])
-						currentObject.emotionValue = clamp(round(newEmotionValue),0,6) #round value
-						print(currentObject.name + " changed emotion to " + str(currentObject.emotionValue) + " because of seeing " + currentObject.focusTarget.name)
-					currentObject.emotionChangeCounter = currentObject.emotionCounterMax
-				else:
-					currentObject.emotionChangeCounter -= 1
+				currentObject.emotionChangeCounter -= 1
 		if("focusSubTarget" in currentObject and "focusSubTime" in currentObject):
 			#quickly change between sub focus objects
 			if(currentObject.focusTarget != null):
@@ -584,39 +597,47 @@ func _physics_process(delta):
 				if(movingPart.has_meta("meshSwapType")):
 					#swap mesh in response to an attachment
 					if(movingPart.get_meta("meshSwapType") == "attachSwap"):
-						self._animateMeshSwap(movingPart.get_meta("meshCollectionName"),
-												movingPart,
+						self._animateMeshSwap(movingPart,
 												true,
 												"attachMesh",
-												currentObject.emotionValue)
+												currentObject.emotionValue,
+												null)
 					#mesh swap for emotion numbers which falls back to attach swap when attached
 					elif(movingPart.get_meta("meshSwapType") == "expressiveSwapWithAttach"):
-						self._animateMeshSwap(movingPart.get_meta("meshCollectionName"),
-												movingPart,
+						self._animateMeshSwap(movingPart,
 												true,
 												"expressiveMesh",
-												currentObject.emotionValue)
+												currentObject.emotionValue,
+												null)
 					#mesh swap for emotion numbers
 					elif(movingPart.get_meta("meshSwapType") == "expressiveSwap"):
-						self._animateMeshSwap(movingPart.get_meta("meshCollectionName"),
-												movingPart,
+						self._animateMeshSwap(movingPart,
 												false,
 												"expressiveMesh",
-												currentObject.emotionValue)
+												currentObject.emotionValue,
+												null)
 					#mesh swap for emotion numbers with blink
 					elif(movingPart.get_meta("meshSwapType") == "expressiveSwapBlink"):
-						self._animateMeshSwap(movingPart.get_meta("meshCollectionName"),
-												movingPart,
+						self._animateMeshSwap(movingPart,
 												false,
 												"expressiveMeshBlinking",
-												currentObject.emotionValue)
+												currentObject.emotionValue,
+												null)
 					#mesh swap for picking a random initial mesh once only
 					elif(movingPart.get_meta("meshSwapType") == "randomInitialSwap"):
-						self._animateMeshSwap(movingPart.get_meta("meshCollectionName"),
-												movingPart,
+						self._animateMeshSwap(movingPart,
 												false,
 												"randomInitialMesh",
-												currentObject.emotionValue)
+												currentObject.emotionValue,
+												null)
+					
+					#mesh swap for picking a specific mesh
+					elif(movingPart.get_meta("meshSwapType") == "specificMesh"):
+						self._animateMeshSwap(movingPart,
+												false,
+												"specificMesh",
+												currentObject.emotionValue,
+												movingPart.get_meta("specificMeshObject"))
 
 		
 		self.sceneScanIterateCompare = self._iterateScanner(self.sceneScanIterateCompare,len(self.get_children())-1)
