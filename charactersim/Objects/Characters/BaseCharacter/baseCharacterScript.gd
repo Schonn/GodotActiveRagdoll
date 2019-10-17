@@ -426,53 +426,53 @@ func _ready():
 									[ #move action for any subtarget at emotion value of 3
 										[ #random variant 0 of action
 											[ #name for this action, node to update, ticks to wait before randomising from this trigger and action variable arrays
-												"walkNormal",self.get_node("FootLeftHelper"),500,quickActionLoadouts["walkNormalLimbs"]
+												self.get_node("FootLeftHelper"),500,quickActionLoadouts["walkNormalLimbs"]
 											],
 											[ 
-												"walkNormal",self.get_node("FootRightHelper"),500,quickActionLoadouts["walkNormalLimbs"]
+												self.get_node("FootRightHelper"),500,quickActionLoadouts["walkNormalLimbs"]
 											],
 											[ 
-												"walkNormal",self.get_node("HandRightHelper"),500,quickActionLoadouts["walkNormalLimbs"]
+												self.get_node("HandRightHelper"),500,quickActionLoadouts["walkNormalLimbs"]
 											],
 											[ 
-												"walkNormal",self.get_node("HandLeftHelper"),500,quickActionLoadouts["walkNormalLimbs"]
+												self.get_node("HandLeftHelper"),500,quickActionLoadouts["walkNormalLimbs"]
 											],
 											[ 
-												"walkNormal",self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
+												self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
 											]
 										],
 										[ #random variant 1 of action
 											[ 
-												"walkStrafeLeft",self.get_node("FootLeftHelper"),500,quickActionLoadouts["walkStrafeLeftLimbs"]
+												self.get_node("FootLeftHelper"),500,quickActionLoadouts["walkStrafeLeftLimbs"]
 											],
 											[ 
-												"walkStrafeLeft",self.get_node("FootRightHelper"),500,quickActionLoadouts["walkStrafeLeftLimbs"]
+												self.get_node("FootRightHelper"),500,quickActionLoadouts["walkStrafeLeftLimbs"]
 											],
 											[ 
-												"walkStrafeLeft",self.get_node("HandRightHelper"),500,quickActionLoadouts["walkStrafeLeftLimbs"]
+												self.get_node("HandRightHelper"),500,quickActionLoadouts["walkStrafeLeftLimbs"]
 											],
 											[ 
-												"walkStrafeLeft",self.get_node("HandLeftHelper"),500,quickActionLoadouts["walkStrafeLeftLimbs"]
+												self.get_node("HandLeftHelper"),500,quickActionLoadouts["walkStrafeLeftLimbs"]
 											],
 											[ 
-												"walkStrafeLeft",self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
+												self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
 											]
 										],
 										[ #random variant 2 of action
 											[ 
-												"walkStrafeRight",self.get_node("FootLeftHelper"),500,quickActionLoadouts["walkStrafeRightLimbs"]
+												self.get_node("FootLeftHelper"),500,quickActionLoadouts["walkStrafeRightLimbs"]
 											],
 											[ 
-												"walkStrafeRight",self.get_node("FootRightHelper"),500,quickActionLoadouts["walkStrafeRightLimbs"]
+												self.get_node("FootRightHelper"),500,quickActionLoadouts["walkStrafeRightLimbs"]
 											],
 											[ 
-												"walkStrafeRight",self.get_node("HandRightHelper"),500,quickActionLoadouts["walkStrafeRightLimbs"]
+												self.get_node("HandRightHelper"),500,quickActionLoadouts["walkStrafeRightLimbs"]
 											],
 											[ 
-												"walkStrafeRight",self.get_node("HandLeftHelper"),500,quickActionLoadouts["walkStrafeRightLimbs"]
+												self.get_node("HandLeftHelper"),500,quickActionLoadouts["walkStrafeRightLimbs"]
 											],
 											[ 
-												"walkStrafeRight",self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
+												self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
 											]
 										]
 									]
@@ -485,19 +485,19 @@ func _ready():
 									[ #move action for any subtarget at emotion value of 3
 										[ #random variant 0 of action
 											[ #name for this action, node to update, ticks to wait before randomising from this trigger and action variable arrays
-												"standIdle",self.get_node("FootLeftHelper"),500,quickActionLoadouts["standIdleLimbs"]
+												self.get_node("FootLeftHelper"),500,quickActionLoadouts["standIdleLimbs"]
 											],
 											[ 
-												"standIdle",self.get_node("FootRightHelper"),500,quickActionLoadouts["standIdleLimbs"]
+												self.get_node("FootRightHelper"),500,quickActionLoadouts["standIdleLimbs"]
 											],
 											[ 
-												"standIdle",self.get_node("HandRightHelper"),500,quickActionLoadouts["standIdleLimbs"]
+												self.get_node("HandRightHelper"),500,quickActionLoadouts["standIdleLimbs"]
 											],
 											[ 
-												"standIdle",self.get_node("HandLeftHelper"),500,quickActionLoadouts["standIdleLimbs"]
+												self.get_node("HandLeftHelper"),500,quickActionLoadouts["standIdleLimbs"]
 											],
 											[ 
-												"standIdle",self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
+												self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
 											]
 										]
 									]
@@ -510,19 +510,19 @@ func _ready():
 									[ #far action for any subtarget at emotion value of 3
 										[ #random variant 0 of action
 											[ #name for this action, node to update, ticks to wait before randomising from this trigger and action variable arrays
-												"farWave",self.get_node("FootLeftHelper"),500,quickActionLoadouts["standIdleLimbs"]
+												self.get_node("FootLeftHelper"),500,quickActionLoadouts["standIdleLimbs"]
 											],
 											[ 
-												"farWave",self.get_node("FootRightHelper"),500,quickActionLoadouts["standIdleLimbs"]
+												self.get_node("FootRightHelper"),500,quickActionLoadouts["standIdleLimbs"]
 											],
 											[ 
-												"farWave",self.get_node("HandRightHelper"),500,quickActionLoadouts["farWaveArms"]
+												self.get_node("HandRightHelper"),500,quickActionLoadouts["farWaveArms"]
 											],
 											[ 
-												"farWave",self.get_node("HandLeftHelper"),500,quickActionLoadouts["farWaveArms"]
+												self.get_node("HandLeftHelper"),500,quickActionLoadouts["farWaveArms"]
 											],
 											[ 
-												"farWave",self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapWave"]
+												self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapWave"]
 											]
 										]
 									]
