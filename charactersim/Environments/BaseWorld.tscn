@@ -175,3 +175,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8786, 4.41538, 28.6821 )
 [node name="BaseCharacter" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9765, 12.8499, -1.3488 )
 
+[node name="BaseCharacter2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4407, 12.8499, -1.3488 )
+

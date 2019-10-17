@@ -319,7 +319,7 @@ func _getActionResponseArray(responseDictionary,triggerPartName,emotionValue):
 		emotionValue = 3
 	randomActionNumber = randi() % responseDictionary[triggerPartName][emotionValue].size()
 	actionDefinition = responseDictionary[triggerPartName][emotionValue][randomActionNumber]
-	return [actionDefinition,triggerPartName,emotionValue]
+	return [actionDefinition,triggerPartName,emotionValue,randomActionNumber]
 
 func _updateResponseAction(currentObject,focusSubTarget,responseDictionary,responseTypeName,emotionValue):
 	if(currentObject.focusSubTarget != null):
@@ -329,10 +329,10 @@ func _updateResponseAction(currentObject,focusSubTarget,responseDictionary,respo
 		else: #set up a generic target response
 			actionDefinition = self._getActionResponseArray(responseDictionary,"ANY",emotionValue)
 		for partSettingsArray in actionDefinition[0]:
-			var settingsChangeName = partSettingsArray[0]
-			var settingsTargetPart = partSettingsArray[1]
-			var newRandomActionCooldownMax = partSettingsArray[2]
-			var targetPartMetaArray = partSettingsArray[3]
+			var settingsChangeName = "em" + str(actionDefinition[2]) + "trpt" + str(actionDefinition[1]) + "ran" + str(actionDefinition[3])
+			var settingsTargetPart = partSettingsArray[0]
+			var newRandomActionCooldownMax = partSettingsArray[1]
+			var targetPartMetaArray = partSettingsArray[2]
 			if not(settingsTargetPart.has_meta("lastMetaChangeName")): #prevent repeated changing of the same setting
 				settingsTargetPart.set_meta("lastMetaChangeName","INITIAL")
 			if not(settingsTargetPart.has_meta("randomActionCooldown")): #slow down randomisation of actions
