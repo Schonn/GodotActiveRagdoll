@@ -293,10 +293,11 @@ func _animateMeshSwap(swappingPart,meshSwapType,emotionValue,specificMeshObject)
 				swappingPart.set_meta("isInitialMeshChosen",true)
 		elif(meshSwapType == "specificMesh"): #switch to a specific mesh
 			if(specificMeshObject != null):
-				if(swappingPart.get_meta("previousMeshObject") != specificMeshObject):
+				if(specificMeshObject.is_visible() == false):
+					print("specific visibility swap")
 					self._meshVisibilitySwap(swappingPart,specificMeshObject)
 					swappingPart.set_meta("previousMeshObject",specificMeshObject)
-
+					
 		#swap to an attached mesh when the mesh attaches to something, 
 		#overrides other mesh swaps when enabled
 		if(isAttachingMesh == true): 
