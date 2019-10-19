@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Froggers_generichit1.ogg-795d2e0331957195fe84147bf073841f.oggstr"
+
+[deps]
+
+source_file="res://Audio/Physics/Impacts/FroggersGeneric/Froggers_generichit1.ogg"
+dest_files=[ "res://.import/Froggers_generichit1.ogg-795d2e0331957195fe84147bf073841f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Audio/Physics/Impacts/FroggersClaps/Froggers_clap1.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Audio/Physics/Impacts/FroggersClaps/Froggers_clap2.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Audio/Physics/Impacts/FroggersClaps/Froggers_clap3.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Audio/Physics/Impacts/FroggersClaps/Froggers_clap4.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Audio/Physics/Impacts/FroggersClaps/Froggers_clap5.ogg" type="AudioStream" id=5]
+
+[node name="sounds_impact" type="Spatial"]
+
+[node name="sound_impact1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 1 )
+unit_db = 1.0
+unit_size = 2.0
+
+[node name="sound_impact2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
+unit_db = 1.0
+unit_size = 2.0
+
+[node name="sound_impact3" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = 1.0
+unit_size = 2.0
+
+[node name="sound_impact4" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+unit_db = 1.0
+unit_size = 2.0
+
+[node name="sound_impact5" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_db = 1.0
+unit_size = 2.0
+

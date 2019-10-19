@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Froggers_clap1.ogg-29393abfcc0d6b16bebd8bd4a6cff3a5.oggstr"
+
+[deps]
+
+source_file="res://Audio/Physics/Impacts/FroggersClaps/Froggers_clap1.ogg"
+dest_files=[ "res://.import/Froggers_clap1.ogg-29393abfcc0d6b16bebd8bd4a6cff3a5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

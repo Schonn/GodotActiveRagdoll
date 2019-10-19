@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Froggers_scrape1.ogg-6dcc39e1f429373304ff2e7266d2f619.oggstr"
+
+[deps]
+
+source_file="res://Audio/Physics/Scrapes/FroggersGeneric/Froggers_scrape1.ogg"
+dest_files=[ "res://.import/Froggers_scrape1.ogg-6dcc39e1f429373304ff2e7266d2f619.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
