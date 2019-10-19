@@ -6,6 +6,7 @@ var sceneScanIterate = null
 #iterator for comparing scene objects in chunks
 var sceneScanIterateCompare = null
 
+
 # initiate scene variables
 func _ready():
 	randomize()
@@ -321,6 +322,7 @@ func _getActionResponseArray(responseDictionary,triggerPartName,emotionValue):
 	actionDefinition = responseDictionary[triggerPartName][emotionValue][randomActionNumber]
 	return [actionDefinition,triggerPartName,emotionValue,randomActionNumber]
 
+#set a specific response for the current scenario
 func _updateResponseAction(currentObject,focusSubTarget,responseDictionary,responseTypeName,emotionValue):
 	if(currentObject.focusSubTarget != null):
 		var actionDefinition = null #the action that will be chosen for this response type
@@ -356,10 +358,60 @@ func _updateResponseAction(currentObject,focusSubTarget,responseDictionary,respo
 					settingsTargetPart.set_meta("lastMetaChangeName",settingsChangeName)
 					settingsTargetPart.set_meta("lastMetaChangeTrigger",responseTypeName + str(actionDefinition[1]) + str(actionDefinition[2]))
 
+#trigger collision sounds for an object depending on speed and collision state
+func _triggerPhysicsSounds(physicsObject,minimumMoveForGratingSound):
+	if(physicsObject.has_node("sounds_impact") or physicsObject.has_node("sounds_scraping")):
+		if not(physicsObject.has_meta("physSoundLastCollisionState")): #make collision sounds play once
+			physicsObject.set_meta("physSoundLastCollisionState",false)
+		if(physicsObject.is_contact_monitor_enabled() == false):
+			physicsObject.contacts_reported = 1
+			physicsObject.set_contact_monitor(true)
+	if(physicsObject.has_node("sounds_impact")):
+		if(len(physicsObject.get_colliding_bodies()) > 0 and physicsObject.get_meta("physSoundLastCollisionState") == false):
+			var audioPlayerObject = physicsObject.get_node("sounds_impact").get_children()[randi() % physicsObject.get_node("sounds_impact").get_children().size()]
+			audioPlayerObject.play()
+			physicsObject.set_meta("physSoundLastCollisionState",true)
+		elif(len(physicsObject.get_colliding_bodies()) == 0 and physicsObject.get_meta("physSoundLastCollisionState") == true):
+			physicsObject.set_meta("physSoundLastCollisionState",false)
+	if(physicsObject.has_node("sounds_scraping")):
+		if(len(physicsObject.get_colliding_bodies()) > 0 and 
+			physicsObject.get_linear_velocity().x > minimumMoveForGratingSound or
+			physicsObject.get_linear_velocity().y > minimumMoveForGratingSound or
+			physicsObject.get_linear_velocity().z > minimumMoveForGratingSound):
+			var audioPlayerObject = physicsObject.get_node("sounds_scraping").get_children()[randi() % physicsObject.get_node("sounds_scraping").get_children().size()]
+			audioPlayerObject.play()
+
 # process scene
 func _physics_process(delta):
 	#object for performing comparisons
 	var currentCompareObject = self.get_children()[sceneScanIterate]
+	
+#	#handle object collision audio
+#	var currentAudioRigidBody = null
+#	if(currentCompareObject.get_class() == "RigidBody"):
+#		currentAudioRigidBody = currentCompareObject
+#	elif(currentCompareObject.get_children() != []):
+		#todo: audio shortlists for iteration
+#		if not (currentCompareObject.has_meta("rigidBodyAudioIteration")):
+#			currentCompareObject.set_meta("rigidBodyAudioIteration",0)
+#		var subRigidBody = currentCompareObject.get_children()[currentCompareObject.get_meta("rigidBodyAudioIteration")]
+#		if(subRigidBody.get_class() == "RigidBody"):
+#			currentAudioRigidBody = subRigidBody
+#		if(currentCompareObject.get_meta("rigidBodyAudioIteration")+1 > (len(currentCompareObject.get_children())-1)):
+#			currentCompareObject.set_meta("rigidBodyAudioIteration",0)
+#		else:
+#			currentCompareObject.set_meta("rigidBodyAudioIteration",currentCompareObject.get_meta("rigidBodyAudioIteration")+1)
+#	if(currentAudioRigidBody != null):
+#		if not (currentAudioRigidBody.has_meta("previousCollisionState")):
+#			currentAudioRigidBody.set_meta("previousCollisionState",false)
+#		if(currentAudioRigidBody.is_contact_monitor_enabled() == false):
+#			currentAudioRigidBody.contacts_reported = 1
+#			currentAudioRigidBody.set_contact_monitor(true)
+#		if(currentAudioRigidBody.get_colliding_bodies() != [] and currentAudioRigidBody.get_meta("previousCollisionState") == false):
+#			print(currentAudioRigidBody.name + " is colliding with something")
+#			currentAudioRigidBody.set_meta("previousCollisionState",true)
+#		elif(currentAudioRigidBody.get_colliding_bodies() == [] and currentAudioRigidBody.get_meta("previousCollisionState") == true):
+#			currentAudioRigidBody.set_meta("previousCollisionState",false)
 	
 	#second scan to compare scene objects
 	var randomSceneRangeMax = int(rand_range(1,50))
@@ -432,10 +484,11 @@ func _physics_process(delta):
 						currentObject.distanceActionTime = int(rand_range(currentObject.distanceActionTimeMax*0.2,currentObject.distanceActionTimeMax))
 						if("closeResponseActions" in currentObject):
 							self._updateResponseAction(currentObject,currentObject.focusSubTarget,currentObject.closeResponseActions,"closeResponse",currentObject.emotionValue)
-
 		
-		#apply movements to nodes marked with specific meta tags for movement and rotation
-		if("movingPartList" in currentObject):
+		#collision sounds for simple objects
+		if not ("movingPartList" in currentObject and currentObject.get_class() != "RigidBody"):
+			self._triggerPhysicsSounds(currentObject,5)
+		elif("movingPartList" in currentObject):#apply movements to nodes marked with specific meta tags for movement and rotation
 			if not (currentObject.has_meta("isDefaultActionApplied")):
 				currentObject.set_meta("isDefaultActionApplied",false)
 			if(currentObject.get_meta("isDefaultActionApplied") == false):
@@ -445,6 +498,9 @@ func _physics_process(delta):
 							actionPartArray[0].set_meta(metaTagLoadout[0],metaTagLoadout[1]) #load in meta tags
 				currentObject.set_meta("isDefaultActionApplied",true)
 			for movingPart in currentObject.movingPartList:
+				#physics audio handling
+				if(movingPart.get_class() == "RigidBody"):
+					self._triggerPhysicsSounds(movingPart,5)
 				
 				#AIMING AND ROTATION METHODS
 				
