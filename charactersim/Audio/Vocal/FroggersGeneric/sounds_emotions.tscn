@@ -1,0 +1,205 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericAngry1.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericAngry2.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericSad1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericSad2.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericConfused1.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericConfused2.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericNeutral1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericNeutral2.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericInquisitive1.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericInquisitive2.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericInquisitive3.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericHappy1.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericHappy2.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericHappy3.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericExcited1.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericExcited2.ogg" type="AudioStream" id=16]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericExcited3.ogg" type="AudioStream" id=17]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/FroggersGenericExcited4.ogg" type="AudioStream" id=18]
+
+[sub_resource type="AudioStreamRandomPitch" id=1]
+audio_stream = ExtResource( 1 )
+
+[sub_resource type="AudioStreamRandomPitch" id=2]
+audio_stream = ExtResource( 2 )
+
+[sub_resource type="AudioStreamRandomPitch" id=3]
+audio_stream = ExtResource( 3 )
+
+[sub_resource type="AudioStreamRandomPitch" id=4]
+audio_stream = ExtResource( 4 )
+
+[sub_resource type="AudioStreamRandomPitch" id=5]
+audio_stream = ExtResource( 5 )
+
+[sub_resource type="AudioStreamRandomPitch" id=6]
+audio_stream = ExtResource( 6 )
+
+[sub_resource type="AudioStreamRandomPitch" id=7]
+audio_stream = ExtResource( 7 )
+
+[sub_resource type="AudioStreamRandomPitch" id=8]
+audio_stream = ExtResource( 8 )
+
+[sub_resource type="AudioStreamRandomPitch" id=9]
+audio_stream = ExtResource( 9 )
+
+[sub_resource type="AudioStreamRandomPitch" id=10]
+audio_stream = ExtResource( 10 )
+
+[sub_resource type="AudioStreamRandomPitch" id=11]
+audio_stream = ExtResource( 11 )
+
+[sub_resource type="AudioStreamRandomPitch" id=12]
+audio_stream = ExtResource( 12 )
+
+[sub_resource type="AudioStreamRandomPitch" id=13]
+audio_stream = ExtResource( 13 )
+
+[sub_resource type="AudioStreamRandomPitch" id=14]
+audio_stream = ExtResource( 14 )
+
+[sub_resource type="AudioStreamRandomPitch" id=15]
+audio_stream = ExtResource( 15 )
+
+[sub_resource type="AudioStreamRandomPitch" id=16]
+audio_stream = ExtResource( 16 )
+
+[sub_resource type="AudioStreamRandomPitch" id=17]
+audio_stream = ExtResource( 17 )
+
+[sub_resource type="AudioStreamRandomPitch" id=18]
+audio_stream = ExtResource( 18 )
+
+[node name="sounds_emotions" type="Spatial"]
+
+[node name="sounds_emotion0" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="sound_emotion0_1" type="AudioStreamPlayer3D" parent="sounds_emotion0"]
+stream = SubResource( 1 )
+unit_db = 1.0
+unit_size = 5.0
+max_db = 1.0
+
+[node name="sound_emotion0_2" type="AudioStreamPlayer3D" parent="sounds_emotion0"]
+stream = SubResource( 2 )
+unit_db = 1.0
+unit_size = 2.0
+max_db = 1.0
+
+[node name="sounds_emotion1" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="sound_emotion1_1" type="AudioStreamPlayer3D" parent="sounds_emotion1"]
+stream = SubResource( 3 )
+unit_db = 1.0
+unit_size = 10.0
+max_db = 1.0
+
+[node name="sound_emotion1_2" type="AudioStreamPlayer3D" parent="sounds_emotion1"]
+stream = SubResource( 4 )
+unit_db = 1.0
+unit_size = 10.0
+max_db = 1.0
+
+[node name="sounds_emotion2" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="sound_emotion2_1" type="AudioStreamPlayer3D" parent="sounds_emotion2"]
+stream = SubResource( 5 )
+unit_db = 1.0
+unit_size = 3.0
+max_db = 1.0
+
+[node name="sound_emotion2_2" type="AudioStreamPlayer3D" parent="sounds_emotion2"]
+stream = SubResource( 6 )
+unit_db = 1.0
+unit_size = 2.0
+max_db = 1.0
+
+[node name="sounds_emotion3" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="sound_emotion3_1" type="AudioStreamPlayer3D" parent="sounds_emotion3"]
+stream = SubResource( 7 )
+unit_db = 1.0
+unit_size = 3.0
+max_db = 1.0
+
+[node name="sound_emotion3_2" type="AudioStreamPlayer3D" parent="sounds_emotion3"]
+stream = SubResource( 8 )
+unit_db = 1.0
+unit_size = 3.0
+max_db = 1.0
+
+[node name="sounds_emotion4" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="sound_emotion4_1" type="AudioStreamPlayer3D" parent="sounds_emotion4"]
+stream = SubResource( 9 )
+unit_db = 1.0
+unit_size = 10.0
+max_db = 2.0
+
+[node name="sound_emotion4_2" type="AudioStreamPlayer3D" parent="sounds_emotion4"]
+stream = SubResource( 10 )
+unit_db = 1.0
+unit_size = 10.0
+max_db = 2.0
+
+[node name="sound_emotion4_3" type="AudioStreamPlayer3D" parent="sounds_emotion4"]
+stream = SubResource( 11 )
+unit_db = 1.0
+unit_size = 10.0
+max_db = 2.0
+
+[node name="sounds_emotion5" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="sound_emotion5_1" type="AudioStreamPlayer3D" parent="sounds_emotion5"]
+stream = SubResource( 12 )
+unit_db = 1.0
+unit_size = 3.0
+max_db = 1.0
+
+[node name="sound_emotion5_2" type="AudioStreamPlayer3D" parent="sounds_emotion5"]
+stream = SubResource( 13 )
+unit_db = 1.0
+unit_size = 3.0
+max_db = 1.0
+
+[node name="sound_emotion5_3" type="AudioStreamPlayer3D" parent="sounds_emotion5"]
+stream = SubResource( 14 )
+unit_db = 1.0
+unit_size = 2.0
+max_db = 1.0
+
+[node name="sounds_emotion6" type="Spatial" parent="."]
+
+[node name="sound_emotion6_1" type="AudioStreamPlayer3D" parent="sounds_emotion6"]
+stream = SubResource( 15 )
+unit_db = 1.0
+unit_size = 3.0
+max_db = 1.0
+
+[node name="sound_emotion6_2" type="AudioStreamPlayer3D" parent="sounds_emotion6"]
+stream = SubResource( 16 )
+unit_db = 1.0
+unit_size = 2.0
+max_db = 1.0
+
+[node name="sound_emotion6_3" type="AudioStreamPlayer3D" parent="sounds_emotion6"]
+stream = SubResource( 17 )
+unit_db = 1.0
+unit_size = 3.0
+max_db = 1.0
+
+[node name="sound_emotion6_4" type="AudioStreamPlayer3D" parent="sounds_emotion6"]
+stream = SubResource( 18 )
+unit_db = 1.0
+unit_size = 3.0
+max_db = 1.0
+

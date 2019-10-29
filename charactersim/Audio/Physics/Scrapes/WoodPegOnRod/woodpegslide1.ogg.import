@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/woodpegslide1.ogg-5c0786d881b1ab96d87a242f4615b8ea.oggstr"
+
+[deps]
+
+source_file="res://Audio/Physics/Scrapes/WoodPegOnRod/woodpegslide1.ogg"
+dest_files=[ "res://.import/woodpegslide1.ogg-5c0786d881b1ab96d87a242f4615b8ea.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

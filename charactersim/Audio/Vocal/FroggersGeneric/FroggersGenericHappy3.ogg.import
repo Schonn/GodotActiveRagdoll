@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/FroggersGenericHappy3.ogg-1dd4e11cbcbda5d18ffdcced36919bb2.oggstr"
+
+[deps]
+
+source_file="res://Audio/Vocal/FroggersGeneric/FroggersGenericHappy3.ogg"
+dest_files=[ "res://.import/FroggersGenericHappy3.ogg-1dd4e11cbcbda5d18ffdcced36919bb2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

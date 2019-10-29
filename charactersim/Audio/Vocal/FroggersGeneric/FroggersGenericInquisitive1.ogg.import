@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/FroggersGenericInquisitive1.ogg-bfd9764bdfa83366cb2bdf8f839c615d.oggstr"
+
+[deps]
+
+source_file="res://Audio/Vocal/FroggersGeneric/FroggersGenericInquisitive1.ogg"
+dest_files=[ "res://.import/FroggersGenericInquisitive1.ogg-bfd9764bdfa83366cb2bdf8f839c615d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

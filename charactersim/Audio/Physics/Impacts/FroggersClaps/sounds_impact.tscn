@@ -7,29 +7,35 @@
 [ext_resource path="res://Audio/Physics/Impacts/FroggersClaps/Froggers_clap5.ogg" type="AudioStream" id=5]
 
 [node name="sounds_impact" type="Spatial"]
+editor/display_folded = true
 
 [node name="sound_impact1" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 1 )
 unit_db = 1.0
-unit_size = 2.0
+unit_size = 0.5
+max_db = 1.0
 
 [node name="sound_impact2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )
 unit_db = 1.0
-unit_size = 2.0
+unit_size = 0.5
+max_db = 1.0
 
 [node name="sound_impact3" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 3 )
 unit_db = 1.0
-unit_size = 2.0
+unit_size = 0.5
+max_db = 1.0
 
 [node name="sound_impact4" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 4 )
 unit_db = 1.0
-unit_size = 2.0
+unit_size = 0.5
+max_db = 1.0
 
 [node name="sound_impact5" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 5 )
 unit_db = 1.0
-unit_size = 2.0
+unit_size = 0.5
+max_db = 1.0
 

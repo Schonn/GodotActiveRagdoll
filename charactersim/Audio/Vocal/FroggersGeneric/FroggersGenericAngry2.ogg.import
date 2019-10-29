@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/FroggersGenericAngry2.ogg-01c7d643b89a1172439f95cc50cb041b.oggstr"
+
+[deps]
+
+source_file="res://Audio/Vocal/FroggersGeneric/FroggersGenericAngry2.ogg"
+dest_files=[ "res://.import/FroggersGenericAngry2.ogg-01c7d643b89a1172439f95cc50cb041b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
