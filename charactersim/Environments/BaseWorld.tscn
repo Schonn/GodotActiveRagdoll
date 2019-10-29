@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Environments/BaseWorld.gd" type="Script" id=1]
-[ext_resource path="res://Objects/Props/SimplePillar.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Objects/Characters/Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/Props/baseTarget.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Objects/Characters/BaseCharacter/baseCharacter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Characters/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Props/Abacus/Abacus.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Characters/BaseCharacter/baseCharacter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Props/baseTarget.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -51,73 +51,8 @@ shader = SubResource( 4 )
 [node name="world" type="Spatial"]
 script = ExtResource( 1 )
 
-[node name="SimplePillar" parent="." instance=ExtResource( 2 )]
-
-[node name="SimplePillar2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9271, 9.33451, -33.8511 )
-
-[node name="SimplePillar3" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5781, 9.26488, -5.90256 )
-
-[node name="SimplePillar4" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.767746, 9.28361, -13.3204 )
-
-[node name="SimplePillar5" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0815, 9.238, 6.26099 )
-
-[node name="SimplePillar6" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25402, 9.20705, 18.5635 )
-
-[node name="SimplePillar7" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5682, 9.22089, 12.1132 )
-
-[node name="SimplePillar8" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1019, 9.26121, -4.77718 )
-
-[node name="SimplePillar9" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6281, 9.2885, -14.8831 )
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08966, 4.13816, 10.1568 )
-
-[node name="baseTarget" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7031, 4.41538, -0.669537 )
-
-[node name="baseTarget2" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.589, 4.41538, -20.83 )
-
-[node name="baseTarget3" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6528, 4.41538, 25.1088 )
-
-[node name="baseTarget4" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8786, 4.41538, 28.6821 )
-
-[node name="BaseCharacter" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9765, 12.8499, -1.3488 )
-
-[node name="BaseCharacter3" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5545, 12.8858, -17.9281 )
-
-[node name="BaseCharacter4" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7839, 12.9061, -37.6131 )
-
-[node name="BaseCharacter5" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8704, 12.8451, -16.9594 )
-
-[node name="BaseCharacter6" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.908199, 12.8979, -27.1918 )
-
-[node name="BaseCharacter7" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.941, 12.9048, -15.8825 )
-
-[node name="BaseCharacter8" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5415, 12.8214, 25.636 )
-
-[node name="BaseCharacter9" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7811, 12.7821, 23.1674 )
-
-[node name="BaseCharacter2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4407, 12.8499, -1.3488 )
 
 [node name="Ground" type="RigidBody" parent="."]
 editor/display_folded = true
@@ -131,4 +66,13 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="Ground/CollisionShape"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 5 )
+
+[node name="Abacus" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7991, 17.5343, 3.23933 )
+
+[node name="BaseCharacter" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8393, 16.6588, 15.3776 )
+
+[node name="baseTarget" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4298, 7.60129, 5.82101 )
 

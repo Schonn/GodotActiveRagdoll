@@ -331,7 +331,7 @@ func _updateResponseAction(currentObject,focusSubTarget,responseDictionary,respo
 		else: #set up a generic target response
 			actionDefinition = self._getActionResponseArray(responseDictionary,"ANY",emotionValue)
 		for partSettingsArray in actionDefinition[0]:
-			var settingsChangeName = "em" + str(actionDefinition[2]) + "trpt" + str(actionDefinition[1]) + "ran" + str(actionDefinition[3])
+			var settingsChangeName = "em" + str(actionDefinition[2]) + "trpt" + str(actionDefinition[1]) + "ran" + str(actionDefinition[3]) + "dict" + responseTypeName
 			var settingsTargetPart = partSettingsArray[0]
 			var newRandomActionCooldownMax = partSettingsArray[1]
 			var targetPartMetaArray = partSettingsArray[2]
@@ -360,58 +360,60 @@ func _updateResponseAction(currentObject,focusSubTarget,responseDictionary,respo
 
 #trigger collision sounds for an object depending on speed and collision state
 func _triggerPhysicsSounds(physicsObject,minimumMoveForGratingSound):
+	var impactSoundRetriggerMaxDelay = 10
 	if(physicsObject.has_node("sounds_impact") or physicsObject.has_node("sounds_scraping")):
 		if not(physicsObject.has_meta("physSoundLastCollisionState")): #make collision sounds play once
 			physicsObject.set_meta("physSoundLastCollisionState",false)
+			physicsObject.set_meta("physSoundImpactDelay",impactSoundRetriggerMaxDelay) #don't spam physics impacts
 		if(physicsObject.is_contact_monitor_enabled() == false):
 			physicsObject.contacts_reported = 1
 			physicsObject.set_contact_monitor(true)
-	if(physicsObject.has_node("sounds_impact")):
-		if(len(physicsObject.get_colliding_bodies()) > 0 and physicsObject.get_meta("physSoundLastCollisionState") == false):
-			var audioPlayerObject = physicsObject.get_node("sounds_impact").get_children()[randi() % physicsObject.get_node("sounds_impact").get_children().size()]
-			audioPlayerObject.play()
-			physicsObject.set_meta("physSoundLastCollisionState",true)
-		elif(len(physicsObject.get_colliding_bodies()) == 0 and physicsObject.get_meta("physSoundLastCollisionState") == true):
-			physicsObject.set_meta("physSoundLastCollisionState",false)
+	if (physicsObject.has_meta("physSoundImpactDelay")):
+		if(physicsObject.get_meta("physSoundImpactDelay") == 0):
+			if(physicsObject.has_node("sounds_impact")):
+				if(len(physicsObject.get_colliding_bodies()) > 0 and physicsObject.get_meta("physSoundLastCollisionState") == false):
+					var audioPlayerObject = physicsObject.get_node("sounds_impact").get_children()[randi() % physicsObject.get_node("sounds_impact").get_children().size()]
+					if (audioPlayerObject.is_playing() == false):
+						audioPlayerObject.play()
+					physicsObject.set_meta("physSoundLastCollisionState",true)
+				elif(len(physicsObject.get_colliding_bodies()) == 0 and physicsObject.get_meta("physSoundLastCollisionState") == true):
+					physicsObject.set_meta("physSoundLastCollisionState",false)
+			physicsObject.set_meta("physSoundImpactDelay",impactSoundRetriggerMaxDelay)
+		else:
+			physicsObject.set_meta("physSoundImpactDelay",physicsObject.get_meta("physSoundImpactDelay")-1)
+		
 	if(physicsObject.has_node("sounds_scraping")):
+		var audioPlayerObject = physicsObject.get_node("sounds_scraping").get_children()[randi() % physicsObject.get_node("sounds_scraping").get_children().size()]
 		if(len(physicsObject.get_colliding_bodies()) > 0 and 
 			physicsObject.get_linear_velocity().x > minimumMoveForGratingSound or
 			physicsObject.get_linear_velocity().y > minimumMoveForGratingSound or
-			physicsObject.get_linear_velocity().z > minimumMoveForGratingSound):
-			var audioPlayerObject = physicsObject.get_node("sounds_scraping").get_children()[randi() % physicsObject.get_node("sounds_scraping").get_children().size()]
+			physicsObject.get_linear_velocity().z > minimumMoveForGratingSound and
+			audioPlayerObject.is_playing() == false):
 			audioPlayerObject.play()
+		else:
+			audioPlayerObject.stop()
+
+#play emotion change sounds when the emotion changes			
+func _triggerEmotionChangeSounds(characterObject,emotionValue):
+	if not(characterObject.has_meta("previousEmotionSoundState")): 
+		characterObject.set_meta("previousEmotionSoundState",-1)
+	if(characterObject.get_meta("previousEmotionSoundState") != emotionValue): #only trigger sound on emotion change
+		if("emotionSoundSourceObject" in characterObject):
+			if(characterObject.emotionSoundSourceObject != null):
+				if(characterObject.emotionSoundSourceObject.has_node("sounds_emotions")):
+					var emotionSoundCollectionNode = characterObject.emotionSoundSourceObject.get_node("sounds_emotions")
+					if(emotionSoundCollectionNode.has_node("sounds_emotion" + str(emotionValue))):
+						var emotionSoundNodes = emotionSoundCollectionNode.get_node("sounds_emotion" + str(emotionValue)).get_children()
+						var audioPlayerObject = emotionSoundNodes[randi() % emotionSoundNodes.size()]
+						if (audioPlayerObject.is_playing() == false):
+							audioPlayerObject.play()
+		characterObject.set_meta("previousEmotionSoundState",emotionValue)
+				
 
 # process scene
 func _physics_process(delta):
 	#object for performing comparisons
 	var currentCompareObject = self.get_children()[sceneScanIterate]
-	
-#	#handle object collision audio
-#	var currentAudioRigidBody = null
-#	if(currentCompareObject.get_class() == "RigidBody"):
-#		currentAudioRigidBody = currentCompareObject
-#	elif(currentCompareObject.get_children() != []):
-		#todo: audio shortlists for iteration
-#		if not (currentCompareObject.has_meta("rigidBodyAudioIteration")):
-#			currentCompareObject.set_meta("rigidBodyAudioIteration",0)
-#		var subRigidBody = currentCompareObject.get_children()[currentCompareObject.get_meta("rigidBodyAudioIteration")]
-#		if(subRigidBody.get_class() == "RigidBody"):
-#			currentAudioRigidBody = subRigidBody
-#		if(currentCompareObject.get_meta("rigidBodyAudioIteration")+1 > (len(currentCompareObject.get_children())-1)):
-#			currentCompareObject.set_meta("rigidBodyAudioIteration",0)
-#		else:
-#			currentCompareObject.set_meta("rigidBodyAudioIteration",currentCompareObject.get_meta("rigidBodyAudioIteration")+1)
-#	if(currentAudioRigidBody != null):
-#		if not (currentAudioRigidBody.has_meta("previousCollisionState")):
-#			currentAudioRigidBody.set_meta("previousCollisionState",false)
-#		if(currentAudioRigidBody.is_contact_monitor_enabled() == false):
-#			currentAudioRigidBody.contacts_reported = 1
-#			currentAudioRigidBody.set_contact_monitor(true)
-#		if(currentAudioRigidBody.get_colliding_bodies() != [] and currentAudioRigidBody.get_meta("previousCollisionState") == false):
-#			print(currentAudioRigidBody.name + " is colliding with something")
-#			currentAudioRigidBody.set_meta("previousCollisionState",true)
-#		elif(currentAudioRigidBody.get_colliding_bodies() == [] and currentAudioRigidBody.get_meta("previousCollisionState") == true):
-#			currentAudioRigidBody.set_meta("previousCollisionState",false)
 	
 	#second scan to compare scene objects
 	var randomSceneRangeMax = int(rand_range(1,50))
@@ -424,7 +426,7 @@ func _physics_process(delta):
 			if(self._getDistance(currentCompareObject,currentObject.targetDistanceReference) < currentObject.targetDistanceLimit):
 				if("focusTarget" in currentObject and "focusTime" in currentObject):
 					#if the current focus object has been looked at enough, it isnt the self object and it has some inner parts to focus on, focus on it
-					if(currentObject.focusTime <= 0 and currentCompareObject != currentObject and "focusPartList" in currentCompareObject and "obstacleArea" in currentCompareObject):
+					if(currentObject.focusTime <= 0 and currentCompareObject != currentObject and "focusPartList" in currentCompareObject):
 						currentObject.focusTarget = currentCompareObject
 						currentObject.focusTime = int(rand_range(currentObject.focusTimeMax*0.3,currentObject.focusTimeMax))
 						print("switched " + currentObject.name + " focus to " + currentObject.focusTarget.name)
@@ -442,6 +444,7 @@ func _physics_process(delta):
 						#and add it (or subtract it if negative) to the emotion value which defaults at 3 (neutral)
 						newEmotionValue = newEmotionValue + (currentObject.traitPerceptions[otherCharacterTrait[0]] * otherCharacterTrait[1])
 					currentObject.emotionValue = clamp(round(newEmotionValue),0,6) #round value
+					self._triggerEmotionChangeSounds(currentObject,currentObject.emotionValue) #play emotion change sounds
 					print(currentObject.name + " changed emotion to " + str(currentObject.emotionValue) + " because of seeing " + currentObject.focusTarget.name)
 				currentObject.emotionChangeCounter = currentObject.emotionCounterMax
 			else:
@@ -449,7 +452,7 @@ func _physics_process(delta):
 		if("focusSubTarget" in currentObject and "focusSubTime" in currentObject):
 			#quickly change between sub focus objects
 			if(currentObject.focusTarget != null):
-				if(currentObject.focusSubTime <= 0 and "focusPartList" in currentObject.focusTarget and "obstacleArea" in currentCompareObject):
+				if(currentObject.focusSubTime <= 0 and "focusPartList" in currentObject.focusTarget):
 					currentObject.focusSubTarget = currentObject.focusTarget.focusPartList[randi() % currentObject.focusTarget.focusPartList.size()]
 					currentObject.focusSubTime = int(rand_range(currentObject.focusSubTimeMax*0.3,currentObject.focusSubTimeMax))
 					#print("switched " + currentObject.name + " sub focus to " + currentObject.focusSubTarget.name)
@@ -463,13 +466,17 @@ func _physics_process(delta):
 		if("targetDistance" in currentObject and "targetDistanceMaxCloseness" in currentObject and "focusSubTarget" in currentObject):
 			if(currentObject.focusSubTarget != null): #if there is a target
 				var areaReachedTarget = false
-				if("obstacleArea" in currentObject):#if the object can detect that it is bumping into things, step back
+				if("reachedTargetArea" in currentObject and "reachedTargetArea" in currentObject.focusTarget): 
+					var movementBlockedArea = currentObject.reachedTargetArea
+					var obscuringObjects = movementBlockedArea.get_overlapping_areas()
+					if(currentObject.focusTarget.reachedTargetArea in obscuringObjects): #stop completely if its the target that we have reached
+						areaReachedTarget = true
+				if("obstacleArea" in currentObject and areaReachedTarget == false):#if the object can detect that it is bumping into things, step back
 					var movementBlockedArea = currentObject.obstacleArea
 					var obscuringObjects = movementBlockedArea.get_overlapping_areas()
-					if(currentObject.focusTarget.obstacleArea in obscuringObjects): #stop completely if its the target that we have reached
-						areaReachedTarget = true
-					elif(obscuringObjects != []): #step back if its something in the way
-						currentObject.blockedMovementReverseTime = currentObject.blockedReverseTimeMax
+					if(obscuringObjects != []):
+						if("obstacleArea" in obscuringObjects[0].get_owner()): #step back if its something in the way
+							currentObject.blockedMovementReverseTime = currentObject.blockedReverseTimeMax
 					elif(currentObject.blockedMovementReverseTime > 0):
 						currentObject.blockedMovementReverseTime -= 1
 				if(areaReachedTarget == false): #if the target is far enough away
@@ -486,7 +493,7 @@ func _physics_process(delta):
 							self._updateResponseAction(currentObject,currentObject.focusSubTarget,currentObject.closeResponseActions,"closeResponse",currentObject.emotionValue)
 		
 		#collision sounds for simple objects
-		if not ("movingPartList" in currentObject and currentObject.get_class() != "RigidBody"):
+		if not ("movingPartList" in currentObject and currentObject.get_class() != "RigidBody"): #if it's just a rigid body
 			self._triggerPhysicsSounds(currentObject,5)
 		elif("movingPartList" in currentObject):#apply movements to nodes marked with specific meta tags for movement and rotation
 			if not (currentObject.has_meta("isDefaultActionApplied")):
