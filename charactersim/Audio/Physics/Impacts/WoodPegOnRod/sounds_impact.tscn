@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Audio/Physics/Impacts/WoodPegOnRod/woodpeghit1.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Audio/Physics/Impacts/WoodPegOnRod/woodpeghit2.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Audio/Physics/Impacts/WoodPegOnRod/woodpeghit3.ogg" type="AudioStream" id=3]
+
+[sub_resource type="AudioStreamRandomPitch" id=1]
+audio_stream = ExtResource( 1 )
+
+[sub_resource type="AudioStreamRandomPitch" id=2]
+audio_stream = ExtResource( 2 )
+
+[sub_resource type="AudioStreamRandomPitch" id=3]
+audio_stream = ExtResource( 3 )
+
+[node name="sounds_impact" type="Spatial"]
+
+[node name="sound_impact1" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource( 1 )
+unit_db = 1.0
+unit_size = 0.5
+max_db = 1.0
+
+[node name="sound_impact2" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource( 2 )
+unit_db = 1.0
+unit_size = 0.5
+max_db = 1.0
+pitch_scale = 2.0
+
+[node name="sound_impact3" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource( 3 )
+unit_db = 1.0
+max_db = 1.0
+pitch_scale = 2.0
+

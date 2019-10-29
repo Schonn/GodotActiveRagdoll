@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/woodpeghit2.ogg-040b261ced151eaf5204c8f77ef6ee77.oggstr"
+
+[deps]
+
+source_file="res://Audio/Physics/Impacts/WoodPegOnRod/woodpeghit2.ogg"
+dest_files=[ "res://.import/woodpeghit2.ogg-040b261ced151eaf5204c8f77ef6ee77.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
