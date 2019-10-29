@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Objects/Characters/BaseCharacter/baseCharacterScript.gd" type="Script" id=1]
-[ext_resource path="res://Configurations/MaterialTypes/highFriction.tres" type="PhysicsMaterial" id=2]
-[ext_resource path="res://Audio/Physics/Scrapes/FroggersGeneric/sounds_scraping.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Audio/Physics/Impacts/FroggersClaps/sounds_impact.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Audio/Vocal/FroggersGeneric/sounds_emotions.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Configurations/MaterialTypes/highFriction.tres" type="PhysicsMaterial" id=3]
+[ext_resource path="res://Audio/Physics/Scrapes/FroggersGeneric/sounds_scraping.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Audio/Physics/Impacts/FroggersClaps/sounds_impact.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -41,9 +42,9 @@
 
 [sub_resource type="CubeMesh" id=18]
 
-[sub_resource type="CubeMesh" id=20]
+[sub_resource type="CubeMesh" id=19]
 
-[sub_resource type="BoxShape" id=21]
+[sub_resource type="BoxShape" id=20]
 
 [node name="BaseCharacter" type="Spatial"]
 script = ExtResource( 1 )
@@ -121,6 +122,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.33855, 0.446253, 1.34101 )
 
 [node name="HandRightHelper0" type="Position3D" parent="Head/moveCycle_FarWave"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40917, -2.37469, 0.189701 )
+
+[node name="sounds_emotions" parent="Head" instance=ExtResource( 2 )]
 
 [node name="GyroTop" type="RigidBody" parent="."]
 editor/display_folded = true
@@ -243,7 +246,6 @@ nodes/node_a = NodePath("..")
 nodes/node_b = NodePath("../../Pelvis")
 
 [node name="Pelvis" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.21325, 0 )
 mass = 510.204
 gravity_scale = 3.0
@@ -792,9 +794,10 @@ enabled = true
 cast_to = Vector3( 0, -0.5, 0.5 )
 
 [node name="FootLeftHelper" type="RigidBody" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492386, -4.98984, -0.120068 )
 mass = 51.0204
-physics_material_override = ExtResource( 2 )
+physics_material_override = ExtResource( 3 )
 gravity_scale = 10.0
 can_sleep = false
 
@@ -815,14 +818,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00441355, -0.282101 )
 nodes/node_a = NodePath("..")
 nodes/node_b = NodePath("../../Pelvis")
 
-[node name="sounds_scraping" parent="FootLeftHelper" instance=ExtResource( 3 )]
+[node name="sounds_scraping" parent="FootLeftHelper" instance=ExtResource( 4 )]
 
-[node name="sounds_impact" parent="FootLeftHelper" instance=ExtResource( 4 )]
+[node name="sounds_impact" parent="FootLeftHelper" instance=ExtResource( 5 )]
 
 [node name="FootRightHelper" type="RigidBody" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483473, -4.98984, -0.120068 )
 mass = 51.0204
-physics_material_override = ExtResource( 2 )
+physics_material_override = ExtResource( 3 )
 gravity_scale = 10.0
 can_sleep = false
 
@@ -843,10 +847,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00441355, -0.282101 )
 nodes/node_a = NodePath("..")
 nodes/node_b = NodePath("../../Pelvis")
 
-[node name="sounds_scraping" parent="FootRightHelper" instance=ExtResource( 3 )]
+[node name="sounds_scraping" parent="FootRightHelper" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.483473, 4.98984, 0.120068 )
 
-[node name="sounds_impact" parent="FootRightHelper" instance=ExtResource( 4 )]
+[node name="sounds_impact" parent="FootRightHelper" instance=ExtResource( 5 )]
 
 [node name="ThighRight" type="RigidBody" parent="."]
 editor/display_folded = true
@@ -860,12 +864,12 @@ transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.3612
 
 [node name="mesh_emotion3" type="MeshInstance" parent="ThighRight/meshes_default"]
 transform = Transform( 4.09095e-08, 0.270372, 0, -0.541863, 2.04125e-08, 0, 0, 0, 0.281311, -0.485037, -0.913274, -0.168971 )
-mesh = SubResource( 20 )
+mesh = SubResource( 19 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="ThighRight"]
 transform = Transform( 0.541863, 1.65691e-08, 0, 1.65691e-08, 0.162807, 0, 0, 0, 0.153477, 0.552034, 0.00914064, 0 )
-shape = SubResource( 21 )
+shape = SubResource( 20 )
 
 [node name="physJoint" type="Generic6DOFJoint" parent="ThighRight"]
 transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -888,12 +892,12 @@ transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.5151
 
 [node name="mesh_emotion3" type="MeshInstance" parent="CalfRight/meshes_default"]
 transform = Transform( 4.09095e-08, 0.270372, 0, -0.541863, 2.04125e-08, 0, 0, 0, 0.281311, -0.485037, -2.06717, -0.168971 )
-mesh = SubResource( 20 )
+mesh = SubResource( 19 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="CalfRight"]
 transform = Transform( 0.541863, 1.65691e-08, 0, 1.65691e-08, 0.162807, 0, 0, 0, 0.153477, 0.552034, 0.00914064, 0 )
-shape = SubResource( 21 )
+shape = SubResource( 20 )
 
 [node name="physJoint" type="Generic6DOFJoint" parent="CalfRight"]
 transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -927,12 +931,12 @@ transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.3612
 
 [node name="mesh_emotion3" type="MeshInstance" parent="ThighLeft/meshes_default"]
 transform = Transform( 4.09095e-08, 0.270372, 0, -0.541863, 2.04125e-08, 0, 0, 0, 0.281311, 0.481547, -0.913274, -0.168971 )
-mesh = SubResource( 20 )
+mesh = SubResource( 19 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="ThighLeft"]
 transform = Transform( 0.541863, 1.65691e-08, 0, 1.65691e-08, 0.162807, 0, 0, 0, 0.153477, 0.552034, 0.00914064, 0 )
-shape = SubResource( 21 )
+shape = SubResource( 20 )
 
 [node name="physJoint" type="Generic6DOFJoint" parent="ThighLeft"]
 transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -955,12 +959,12 @@ transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.5151
 
 [node name="mesh_emotion3" type="MeshInstance" parent="CalfLeft/meshes_default"]
 transform = Transform( 4.09095e-08, 0.270372, 0, -0.541863, 2.04125e-08, 0, 0, 0, 0.281311, 0.481547, -2.06717, -0.168971 )
-mesh = SubResource( 20 )
+mesh = SubResource( 19 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="CalfLeft"]
 transform = Transform( 0.541863, 1.65691e-08, 0, 1.65691e-08, 0.162807, 0, 0, 0, 0.153477, 0.552034, 0.00914064, 0 )
-shape = SubResource( 21 )
+shape = SubResource( 20 )
 
 [node name="physJoint" type="Generic6DOFJoint" parent="CalfLeft"]
 transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )

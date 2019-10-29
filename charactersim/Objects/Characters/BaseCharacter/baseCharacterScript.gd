@@ -20,6 +20,7 @@ var emotionChangeCounter = null
 var emotionCounterMax = null
 var characterTraits = null
 var traitPerceptions = null
+var emotionSoundSourceObject = null #where to find the spatial nodes which will contain emotion sounds
 
 #dictionary of points for animation cycles
 var moveCycleDefinitions = null
@@ -34,6 +35,7 @@ var targetDistanceLimit = null #the furthest a target can be
 
 #area object for detecting distances to targets or obstructions
 var obstacleArea = null
+var reachedTargetArea = null
 
 #for getting around obstacles
 var blockedReverseTimeMax = null
@@ -55,6 +57,8 @@ func _ready():
 	self.emotionValue = 3 #emotion value from 0 to 6, starting at middle of 3
 	self.emotionChangeCounter = 0
 	self.emotionCounterMax = 200
+	
+	self.emotionSoundSourceObject = self.get_node("Head")
 	
 	self.characterTraits = [ #traits relating to this character and how strong each trait is
 								["slimy",0.5],
@@ -142,6 +146,7 @@ func _ready():
 	self.blockedReverseTimeMax = 200
 	self.blockedMovementReverseTime = 0 #current counter for stepping back before stepping forwards again
 	self.obstacleArea = self.get_node("Pelvis/obstacleTestArea")
+	self.reachedTargetArea = self.obstacleArea
 	
 	#list of parts to be iterated through to apply move rules, rules won't be applied unless the object is listed here
 	self.movingPartList = 	[self.get_node("Head"),
