@@ -47,7 +47,8 @@ nodes/fragment/connections = PoolIntArray( 3, 0, 0, 0 )
 shader = SubResource( 4 )
 
 [node name="SimplePillar" type="RigidBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.7994, 9.32678, -29.9482 )
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073801, 6.07749, 0.0129433 )
 mass = 20.4082
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

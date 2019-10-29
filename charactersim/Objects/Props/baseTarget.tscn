@@ -12,6 +12,7 @@
 script = ExtResource( 1 )
 
 [node name="targetPart" type="RigidBody" parent="."]
+editor/display_folded = true
 transform = Transform( 0.312218, 0, 0, 0, 0.312218, 0, 0, 0, 0.312218, 0, 0, 0 )
 mode = 1
 
