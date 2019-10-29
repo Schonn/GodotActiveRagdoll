@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Environments/BaseWorld.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Characters/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Props/Abacus/Abacus.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Characters/BaseCharacter/baseCharacter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Props/baseTarget.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Props/SimplePillar.tscn" type="PackedScene" id=6]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -74,5 +75,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7991, 17.5343, 3.23933 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8393, 16.6588, 15.3776 )
 
 [node name="baseTarget" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4298, 7.60129, 5.82101 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.4542, 7.55676, -5.54499 )
+
+[node name="baseTarget2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.31166, 7.63383, 10.7394 )
+
+[node name="BaseCharacter2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4168, 18.6089, -7.0299 )
+
+[node name="SimplePillar" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.70046, 11.5437, -1.2653 )
+
+[node name="SimplePillar2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4513, 11.3684, 4.54376 )
 
