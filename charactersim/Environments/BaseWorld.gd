@@ -198,7 +198,7 @@ func _dynamicAttachmentUpdate(attachJoint,attachTriggerRay,attachingPart,freezeM
 #				freezingPartPhysJoint.set_meta("constraintMoveBuffer",1) #add buffer to smooth transition
 				freezingPartPhysJoint.set("linear_limit_" + movementAxes[movementAxis] + "/enabled",true) #make sure that the phys joint is back on
 				freezingPartPhysJoint.set("angular_limit_" + movementAxes[movementAxis] + "/enabled",true)
-			if(attachJoint.has_meta("currentAttachedObject")): #
+			if(attachJoint.has_meta("currentAttachedObject")): 
 				var lastAttachedObject = attachJoint.get_meta("currentAttachedObject")
 				if (lastAttachedObject.has_meta("attachedObjectCount")):
 					lastAttachedObject.set_meta("attachedObjectCount",lastAttachedObject.get_meta("attachedObjectCount")-1)
@@ -361,10 +361,12 @@ func _updateResponseAction(currentObject,focusSubTarget,responseDictionary,respo
 #trigger collision sounds for an object depending on speed and collision state
 func _triggerPhysicsSounds(physicsObject,minimumMoveForGratingSound):
 	var impactSoundRetriggerMaxDelay = 10
+	var scrapeSoundRetriggerMaxDelay = 10
 	if(physicsObject.has_node("sounds_impact") or physicsObject.has_node("sounds_scraping")):
 		if not(physicsObject.has_meta("physSoundLastCollisionState")): #make collision sounds play once
 			physicsObject.set_meta("physSoundLastCollisionState",false)
 			physicsObject.set_meta("physSoundImpactDelay",impactSoundRetriggerMaxDelay) #don't spam physics impacts
+			physicsObject.set_meta("physSoundScrapeDelay",scrapeSoundRetriggerMaxDelay)
 		if(physicsObject.is_contact_monitor_enabled() == false):
 			physicsObject.contacts_reported = 1
 			physicsObject.set_contact_monitor(true)
@@ -381,17 +383,22 @@ func _triggerPhysicsSounds(physicsObject,minimumMoveForGratingSound):
 			physicsObject.set_meta("physSoundImpactDelay",impactSoundRetriggerMaxDelay)
 		else:
 			physicsObject.set_meta("physSoundImpactDelay",physicsObject.get_meta("physSoundImpactDelay")-1)
-		
-	if(physicsObject.has_node("sounds_scraping")):
-		var audioPlayerObject = physicsObject.get_node("sounds_scraping").get_children()[randi() % physicsObject.get_node("sounds_scraping").get_children().size()]
-		if(len(physicsObject.get_colliding_bodies()) > 0 and 
-			physicsObject.get_linear_velocity().x > minimumMoveForGratingSound or
-			physicsObject.get_linear_velocity().y > minimumMoveForGratingSound or
-			physicsObject.get_linear_velocity().z > minimumMoveForGratingSound and
-			audioPlayerObject.is_playing() == false):
-			audioPlayerObject.play()
+
+	if (physicsObject.has_meta("physSoundScrapeDelay")):
+		if(physicsObject.get_meta("physSoundScrapeDelay") == 0):
+			if(physicsObject.has_node("sounds_scraping")):
+				var audioPlayerObject = physicsObject.get_node("sounds_scraping").get_children()[randi() % physicsObject.get_node("sounds_scraping").get_children().size()]
+				if(len(physicsObject.get_colliding_bodies()) > 0 and 
+					physicsObject.get_linear_velocity().x > minimumMoveForGratingSound or
+					physicsObject.get_linear_velocity().y > minimumMoveForGratingSound or
+					physicsObject.get_linear_velocity().z > minimumMoveForGratingSound and
+					audioPlayerObject.is_playing() == false):
+					audioPlayerObject.play()
+				else:
+					audioPlayerObject.stop()
+			physicsObject.set_meta("physSoundScrapeDelay",scrapeSoundRetriggerMaxDelay)
 		else:
-			audioPlayerObject.stop()
+			physicsObject.set_meta("physSoundScrapeDelay",physicsObject.get_meta("physSoundScrapeDelay")-1)
 
 #play emotion change sounds when the emotion changes			
 func _triggerEmotionChangeSounds(characterObject,emotionValue):
@@ -422,8 +429,8 @@ func _physics_process(delta):
 	for sceneObjectNumber in range(0,randomSceneRangeMax):
 		var currentObject = self.get_children()[sceneObjectNumber]
 		#set a focus on a new object if the focus time for an old object has run out and the object is close enough
-		if("targetDistanceLimit" in currentObject and "targetDistanceReference" in currentObject):
-			if(self._getDistance(currentCompareObject,currentObject.targetDistanceReference) < currentObject.targetDistanceLimit):
+		if("targetDistanceLimit" in currentObject and "targetDistanceReference" in currentObject and "targetDistanceReference" in currentCompareObject):
+			if(self._getDistance(currentCompareObject.targetDistanceReference,currentObject.targetDistanceReference) < currentObject.targetDistanceLimit):
 				if("focusTarget" in currentObject and "focusTime" in currentObject):
 					#if the current focus object has been looked at enough, it isnt the self object and it has some inner parts to focus on, focus on it
 					if(currentObject.focusTime <= 0 and currentCompareObject != currentObject and "focusPartList" in currentCompareObject):
@@ -460,7 +467,7 @@ func _physics_process(delta):
 					currentObject.focusSubTime -= 1
 			#calculate distances
 			if(currentObject.focusSubTarget != null):
-				currentObject.targetDistance = self._getDistance(currentObject.focusTarget,currentObject.targetDistanceReference)
+				currentObject.targetDistance = self._getDistance(currentObject.focusTarget.targetDistanceReference,currentObject.targetDistanceReference)
 		
 		#change meta settings for nodes for movement and actions occuring near and far from a target
 		if("targetDistance" in currentObject and "targetDistanceMaxCloseness" in currentObject and "focusSubTarget" in currentObject):

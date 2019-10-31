@@ -72,7 +72,25 @@ material/0 = SubResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7991, 17.5343, 3.23933 )
 
 [node name="BaseCharacter" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8393, 16.6588, 15.3776 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -164.809, 16.6588, 15.3776 )
+
+[node name="BaseCharacter3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23345, 16.6588, 19.2807 )
+
+[node name="BaseCharacter4" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7919, 16.6588, 25.9347 )
+
+[node name="BaseCharacter5" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0047, 16.6588, 23.0299 )
+
+[node name="BaseCharacter6" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.8058, 16.6588, 11.8154 )
+
+[node name="BaseCharacter7" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2824, 16.6588, -0.458331 )
+
+[node name="BaseCharacter8" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.682, 16.6588, -21.7897 )
 
 [node name="baseTarget" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.4542, 7.55676, -5.54499 )
@@ -81,7 +99,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.4542, 7.55676, -5.54499 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.31166, 7.63383, 10.7394 )
 
 [node name="BaseCharacter2" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4168, 18.6089, -7.0299 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -162.387, 18.6089, -7.0299 )
 
 [node name="SimplePillar" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.70046, 11.5437, -1.2653 )
