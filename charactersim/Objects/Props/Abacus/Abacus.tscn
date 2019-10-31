@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Objects/Props/Abacus/Abacus.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Props/Abacus/AbacusSurface.material" type="Material" id=2]
-[ext_resource path="res://Audio/Physics/Impacts/WoodPegOnRod/sounds_impact.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Audio/Physics/Scrapes/WoodPegOnRod/sounds_scraping.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Audio/Physics/Impacts/FroggersGeneric/sounds_impact.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Audio/Physics/Impacts/WoodPegOnRod/sounds_impact.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.946026, 1, 1 )
@@ -27,10 +29,9 @@ surfaces/0 = {
 vertex_color_use_as_albedo = true
 roughness = 0.57
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=4]
 
-[sub_resource type="ArrayMesh" id=4]
-resource_name = "Cube.003"
+[sub_resource type="ArrayMesh" id=5]
 surfaces/0 = {
 "aabb": AABB( -0.716602, -0.692775, -0.798485, 1.44567, 1.41579, 1.48478 ),
 "array_data": PoolByteArray( 51, 3, 248, 62, 108, 21, 22, 63, 47, 38, 72, 189, 180, 101, 0, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 153, 95, 194, 62, 143, 159, 25, 63, 78, 166, 184, 190, 202, 101, 52, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 106, 187, 166, 62, 124, 49, 223, 61, 138, 6, 149, 190, 150, 8, 68, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 255, 148, 246, 190, 213, 254, 38, 191, 227, 122, 10, 190, 19, 131, 0, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 128, 73, 130, 190, 110, 2, 29, 191, 58, 68, 1, 191, 249, 132, 232, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 72, 1, 145, 190, 221, 200, 7, 191, 222, 141, 165, 190, 85, 203, 76, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 23, 162, 183, 61, 55, 20, 27, 191, 227, 218, 27, 191, 8, 145, 196, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 255, 15, 192, 59, 112, 232, 2, 191, 165, 155, 241, 190, 9, 196, 111, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 52, 134, 181, 62, 54, 153, 60, 62, 92, 67, 228, 61, 142, 8, 202, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 76, 144, 176, 62, 127, 198, 30, 63, 103, 34, 141, 62, 214, 88, 177, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 225, 250, 234, 190, 34, 104, 29, 63, 207, 49, 143, 189, 34, 121, 16, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 124, 14, 128, 190, 245, 159, 145, 62, 123, 199, 87, 62, 88, 10, 166, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 222, 8, 178, 190, 127, 3, 33, 60, 127, 129, 198, 60, 126, 251, 249, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 30, 169, 253, 60, 146, 244, 211, 62, 183, 161, 180, 62, 247, 28, 133, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 56, 215, 193, 62, 111, 218, 251, 62, 15, 157, 7, 63, 68, 51, 93, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 249, 123, 13, 63, 164, 193, 21, 63, 176, 66, 69, 62, 85, 90, 27, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 16, 182, 68, 61, 124, 23, 57, 63, 240, 57, 247, 62, 18, 125, 254, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 55, 84, 129, 189, 176, 82, 42, 63, 91, 0, 20, 63, 241, 80, 97, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 158, 50, 205, 190, 128, 115, 38, 63, 103, 154, 112, 62, 250, 124, 231, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 247, 106, 209, 190, 207, 2, 15, 63, 143, 172, 243, 62, 185, 65, 82, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 57, 207, 141, 190, 236, 34, 3, 62, 17, 230, 161, 190, 97, 14, 79, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 84, 155, 78, 62, 64, 161, 138, 189, 7, 177, 47, 63, 33, 248, 122, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 79, 8, 4, 63, 161, 214, 26, 191, 103, 171, 160, 62, 78, 180, 64, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 212, 3, 8, 63, 30, 54, 62, 61, 28, 165, 233, 62, 97, 0, 81, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 19, 22, 48, 62, 196, 45, 39, 191, 25, 98, 3, 63, 23, 150, 65, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 78, 175, 113, 62, 187, 163, 22, 191, 161, 51, 172, 62, 197, 189, 167, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 10, 154, 235, 62, 3, 193, 20, 191, 31, 121, 142, 61, 162, 179, 221, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 136, 4, 174, 189, 172, 242, 36, 191, 142, 32, 209, 62, 4, 139, 209, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 113, 48, 209, 190, 187, 89, 49, 191, 248, 147, 84, 62, 19, 132, 243, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 38, 74, 68, 190, 74, 194, 12, 191, 108, 141, 17, 63, 225, 188, 101, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 46, 17, 141, 190, 31, 170, 34, 189, 227, 249, 37, 63, 204, 254, 115, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 109, 151, 28, 191, 170, 39, 1, 191, 146, 55, 197, 190, 161, 194, 201, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 169, 250, 52, 191, 48, 73, 1, 191, 0, 80, 106, 59, 142, 202, 10, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 54, 115, 55, 191, 214, 53, 63, 62, 7, 135, 145, 190, 137, 21, 218, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 242, 0, 207, 62, 59, 201, 5, 191, 89, 82, 105, 190, 157, 195, 48, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 251, 204, 237, 62, 204, 167, 23, 191, 51, 126, 155, 190, 253, 130, 252, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 98, 252, 21, 63, 103, 45, 36, 191, 64, 189, 62, 61, 49, 140, 0, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 23, 235, 16, 63, 230, 133, 3, 191, 182, 100, 233, 190, 81, 188, 188, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 185, 169, 209, 190, 40, 96, 232, 190, 108, 67, 33, 191, 197, 204, 158, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 88, 231, 135, 61, 127, 228, 246, 59, 30, 54, 241, 190, 241, 5, 125, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 247, 26, 72, 60, 238, 104, 16, 63, 51, 83, 8, 191, 255, 69, 106, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 249, 98, 156, 190, 67, 58, 32, 63, 201, 227, 206, 190, 52, 106, 44, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 36, 201, 27, 191, 155, 110, 234, 62, 149, 68, 146, 62, 148, 46, 45, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 152, 63, 13, 191, 235, 99, 11, 191, 79, 111, 167, 62, 167, 199, 68, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 72, 209, 56, 63, 207, 209, 215, 190, 128, 38, 162, 59, 121, 223, 11, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 182, 34, 1, 191, 155, 175, 34, 63, 32, 210, 167, 190, 188, 100, 221, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 141, 212, 5, 63, 44, 182, 27, 63, 58, 136, 167, 190, 69, 99, 220, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 24, 164, 58, 63, 34, 68, 75, 62, 223, 246, 199, 60, 123, 22, 16, 0, 127, 0, 0, 129, 30, 17, 11, 255, 0, 0, 0, 60, 27, 111, 57, 62, 255, 168, 28, 63, 110, 95, 19, 191, 22, 113, 203, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 193, 151, 96, 190, 144, 25, 29, 63, 13, 68, 19, 191, 228, 104, 191, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 155, 106, 210, 188, 147, 172, 202, 62, 47, 225, 69, 191, 254, 47, 139, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 245, 121, 134, 190, 248, 141, 228, 58, 138, 105, 76, 191, 211, 0, 138, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 204, 86, 176, 62, 192, 6, 70, 61, 53, 151, 63, 191, 57, 3, 143, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60, 187, 56, 49, 63, 111, 55, 37, 61, 132, 97, 184, 190, 114, 10, 204, 0, 127, 0, 0, 127, 30, 17, 11, 255, 0, 0, 0, 60 ),
@@ -45,7 +46,7 @@ surfaces/0 = {
 "vertex_count": 54
 }
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=6]
 vertex_color_use_as_albedo = true
 metallic_specular = 0.79
 roughness = 0.47
@@ -53,52 +54,55 @@ roughness = 0.47
 [node name="Abacus" type="Spatial"]
 script = ExtResource( 1 )
 
-[node name="AbacusFrame" type="RigidBody" parent="."]
+[node name="GrabPoint" type="RigidBody" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="AbacusFrame"]
-transform = Transform( 1.45349, 0, 0, 0, 0.0380718, 0, 0, 0, 0.15814, -0.00277683, 0.620974, -0.0552432 )
+[node name="CollisionShape" type="CollisionShape" parent="GrabPoint"]
+transform = Transform( 1.45349, 0, 0, 0, 0.0380718, 0, 0, 0, 0.215838, -0.00277683, 0.620974, -0.0552432 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2" type="CollisionShape" parent="AbacusFrame"]
-transform = Transform( 1.42662, 0, 0, 0, 0.0640979, 0, 0, 0, 0.15814, -0.00277683, 0.173854, -0.0552432 )
+[node name="CollisionShape2" type="CollisionShape" parent="GrabPoint"]
+transform = Transform( 1.42662, 0, 0, 0, 0.0640979, 0, 0, 0, 0.215838, -0.00277683, 0.173854, -0.0552432 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape3" type="CollisionShape" parent="AbacusFrame"]
-transform = Transform( 1.43567, 0, 0, 0, 0.041016, 0, 0, 0, 0.15814, -0.00277683, -0.637035, -0.0552432 )
+[node name="CollisionShape3" type="CollisionShape" parent="GrabPoint"]
+transform = Transform( 1.43567, 0, 0, 0, 0.041016, 0, 0, 0, 0.215838, -0.00277683, -0.637035, -0.0552432 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape4" type="CollisionShape" parent="AbacusFrame"]
-transform = Transform( 0.0371185, 0, 0, 0, 0.613457, 0, 0, 0, 0.15814, -1.3557, -0.0285874, -0.0552432 )
+[node name="CollisionShape4" type="CollisionShape" parent="GrabPoint"]
+transform = Transform( 0.0371185, 0, 0, 0, 0.613457, 0, 0, 0, 0.215838, -1.3557, -0.0285874, -0.0552432 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape5" type="CollisionShape" parent="AbacusFrame"]
-transform = Transform( 0.0371185, 0, 0, 0, 0.613457, 0, 0, 0, 0.15814, 1.34084, -0.0285874, -0.0552432 )
+[node name="CollisionShape5" type="CollisionShape" parent="GrabPoint"]
+transform = Transform( 0.0371185, 0, 0, 0, 0.613457, 0, 0, 0, 0.215838, 1.34084, -0.0285874, -0.0552432 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape6" type="CollisionShape" parent="AbacusFrame"]
+[node name="CollisionShape6" type="CollisionShape" parent="GrabPoint"]
 transform = Transform( -1.6225e-09, 0, 0.15814, 0, 0.613457, 0, -0.0371185, 0, -6.91254e-09, 0.560277, -0.0285874, -0.174502 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape7" type="CollisionShape" parent="AbacusFrame"]
+[node name="CollisionShape7" type="CollisionShape" parent="GrabPoint"]
 transform = Transform( -1.6225e-09, 0, 0.15814, 0, 0.613457, 0, -0.0371185, 0, -6.91254e-09, -0.590065, -0.0285874, -0.174502 )
 shape = SubResource( 1 )
 
-[node name="AbacusFrame" type="MeshInstance" parent="AbacusFrame"]
+[node name="AbacusFrame" type="MeshInstance" parent="GrabPoint"]
 transform = Transform( 0.52348, 0, 0, 0, 0.52348, 0, 0, 0, 0.52348, 0.0156921, 0.0105156, -0.0517212 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
-[node name="ReachedTargetArea" type="Area" parent="AbacusFrame"]
+[node name="ReachedTargetArea" type="Area" parent="GrabPoint"]
 editor/display_folded = true
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape" type="CollisionShape" parent="AbacusFrame/ReachedTargetArea"]
+[node name="CollisionShape" type="CollisionShape" parent="GrabPoint/ReachedTargetArea"]
 transform = Transform( 1.75231, 0, 0, 0, 1, 0, 0, 0, 0.416678, 0, 0, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
+
+[node name="sounds_scraping" parent="GrabPoint" instance=ExtResource( 3 )]
+
+[node name="sounds_impact" parent="GrabPoint" instance=ExtResource( 4 )]
 
 [node name="AbacusBead1" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16043, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -109,19 +113,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead1"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead1"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
 
-[node name="sounds_impact" parent="AbacusBead1" instance=ExtResource( 3 )]
+[node name="sounds_impact" parent="AbacusBead1" instance=ExtResource( 5 )]
 
 [node name="AbacusBead27" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16043, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -132,17 +135,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead27"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead27"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead27" instance=ExtResource( 5 )]
+
 [node name="AbacusBead32" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.970304, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -153,17 +157,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead32"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead32"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead32" instance=ExtResource( 5 )]
+
 [node name="AbacusBead40" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.783926, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -174,17 +179,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead40"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead40"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead40" instance=ExtResource( 5 )]
+
 [node name="AbacusBead44" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.608736, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -195,17 +201,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead44"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead44"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead44" instance=ExtResource( 5 )]
+
 [node name="AbacusBead51" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366192, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -216,17 +223,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead51"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead51"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead51" instance=ExtResource( 5 )]
+
 [node name="AbacusBead53" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.184112, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -237,17 +245,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead53"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead53"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead53" instance=ExtResource( 5 )]
+
 [node name="AbacusBead59" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0135826, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -258,17 +267,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead59"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead59"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead59" instance=ExtResource( 5 )]
+
 [node name="AbacusBead64" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.185272, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -279,17 +289,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead64"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead64"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead64" instance=ExtResource( 5 )]
+
 [node name="AbacusBead68" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.407201, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -300,17 +311,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead68"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead68"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead68" instance=ExtResource( 5 )]
+
 [node name="AbacusBead76" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.595247, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -321,17 +333,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead76"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead76"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead76" instance=ExtResource( 5 )]
+
 [node name="AbacusBead80" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.781369, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -342,17 +355,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead80"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead80"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead80" instance=ExtResource( 5 )]
+
 [node name="AbacusBead85" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.971423, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -363,17 +377,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead85"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead85"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead85" instance=ExtResource( 5 )]
+
 [node name="AbacusBead90" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15156, -0.552499, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -384,17 +399,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead90"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead90"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.6
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead90" instance=ExtResource( 5 )]
+
 [node name="AbacusBead28" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16043, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -405,17 +421,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead28"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead28"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead28" instance=ExtResource( 5 )]
+
 [node name="AbacusBead36" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.970304, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -426,17 +443,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead36"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead36"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead36" instance=ExtResource( 5 )]
+
 [node name="AbacusBead38" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.783926, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -447,17 +465,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead38"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead38"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead38" instance=ExtResource( 5 )]
+
 [node name="AbacusBead43" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.608736, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -468,17 +487,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead43"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead43"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead43" instance=ExtResource( 5 )]
+
 [node name="AbacusBead48" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366192, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -489,17 +509,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead48"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead48"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead48" instance=ExtResource( 5 )]
+
 [node name="AbacusBead54" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.184112, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -510,17 +531,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead54"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead54"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead54" instance=ExtResource( 5 )]
+
 [node name="AbacusBead61" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0135826, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -531,17 +553,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead61"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead61"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead61" instance=ExtResource( 5 )]
+
 [node name="AbacusBead62" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.185272, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -552,17 +575,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead62"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead62"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead62" instance=ExtResource( 5 )]
+
 [node name="AbacusBead71" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.407201, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -573,17 +597,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead71"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead71"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead71" instance=ExtResource( 5 )]
+
 [node name="AbacusBead75" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.595247, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -594,17 +619,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead75"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead75"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead75" instance=ExtResource( 5 )]
+
 [node name="AbacusBead79" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.781369, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -615,17 +641,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead79"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead79"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead79" instance=ExtResource( 5 )]
+
 [node name="AbacusBead84" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.971423, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -636,17 +663,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead84"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead84"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead84" instance=ExtResource( 5 )]
+
 [node name="AbacusBead89" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15156, -0.459934, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -657,17 +685,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead89"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead89"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.51
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead89" instance=ExtResource( 5 )]
+
 [node name="AbacusBead29" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16043, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -678,17 +707,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead29"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead29"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead29" instance=ExtResource( 5 )]
+
 [node name="AbacusBead33" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.970304, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -699,17 +729,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead33"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead33"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead33" instance=ExtResource( 5 )]
+
 [node name="AbacusBead39" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.783926, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -720,17 +751,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead39"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead39"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead39" instance=ExtResource( 5 )]
+
 [node name="AbacusBead46" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.608736, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -741,17 +773,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead46"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead46"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead46" instance=ExtResource( 5 )]
+
 [node name="AbacusBead49" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366192, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -762,17 +795,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead49"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead49"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead49" instance=ExtResource( 5 )]
+
 [node name="AbacusBead55" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.184112, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -783,17 +817,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead55"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead55"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead55" instance=ExtResource( 5 )]
+
 [node name="AbacusBead57" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0135826, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -804,17 +839,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead57"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead57"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead57" instance=ExtResource( 5 )]
+
 [node name="AbacusBead66" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.185272, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -825,17 +861,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead66"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead66"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead66" instance=ExtResource( 5 )]
+
 [node name="AbacusBead70" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.407201, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -846,17 +883,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead70"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead70"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead70" instance=ExtResource( 5 )]
+
 [node name="AbacusBead74" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.595247, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -867,17 +905,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead74"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead74"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead74" instance=ExtResource( 5 )]
+
 [node name="AbacusBead78" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.781369, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -888,17 +927,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead78"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead78"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead78" instance=ExtResource( 5 )]
+
 [node name="AbacusBead83" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.971423, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -909,17 +949,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead83"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead83"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead83" instance=ExtResource( 5 )]
+
 [node name="AbacusBead88" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15156, -0.357424, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -930,17 +971,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead88"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead88"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.41
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead88" instance=ExtResource( 5 )]
+
 [node name="AbacusBead30" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16043, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -951,17 +993,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead30"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead30"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead30" instance=ExtResource( 5 )]
+
 [node name="AbacusBead34" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.970304, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -972,17 +1015,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead34"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead34"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead34" instance=ExtResource( 5 )]
+
 [node name="AbacusBead37" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.783926, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -993,17 +1037,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead37"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead37"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead37" instance=ExtResource( 5 )]
+
 [node name="AbacusBead42" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.608736, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1014,17 +1059,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead42"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead42"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead42" instance=ExtResource( 5 )]
+
 [node name="AbacusBead47" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366192, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1035,17 +1081,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead47"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead47"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead47" instance=ExtResource( 5 )]
+
 [node name="AbacusBead52" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.184112, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1056,17 +1103,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead52"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead52"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead52" instance=ExtResource( 5 )]
+
 [node name="AbacusBead60" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0135826, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1077,17 +1125,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead60"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead60"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead60" instance=ExtResource( 5 )]
+
 [node name="AbacusBead65" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.185272, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1098,17 +1147,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead65"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead65"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead65" instance=ExtResource( 5 )]
+
 [node name="AbacusBead69" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.407201, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1119,17 +1169,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead69"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead69"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead69" instance=ExtResource( 5 )]
+
 [node name="AbacusBead73" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.595247, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1140,17 +1191,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead73"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead73"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead73" instance=ExtResource( 5 )]
+
 [node name="AbacusBead77" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.781369, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1161,17 +1213,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead77"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead77"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead77" instance=ExtResource( 5 )]
+
 [node name="AbacusBead82" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.971423, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1182,17 +1235,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead82"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead82"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead82" instance=ExtResource( 5 )]
+
 [node name="AbacusBead87" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15156, -0.257595, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1203,17 +1257,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead87"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead87"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.3
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead87" instance=ExtResource( 5 )]
+
 [node name="AbacusBead31" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16043, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1224,17 +1279,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead31"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead31"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead31" instance=ExtResource( 5 )]
+
 [node name="AbacusBead35" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.970304, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1245,17 +1301,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead35"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead35"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead35" instance=ExtResource( 5 )]
+
 [node name="AbacusBead41" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.783926, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1266,17 +1323,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead41"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead41"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead41" instance=ExtResource( 5 )]
+
 [node name="AbacusBead45" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.608736, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1287,17 +1345,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead45"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead45"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead45" instance=ExtResource( 5 )]
+
 [node name="AbacusBead50" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366192, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1308,17 +1367,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead50"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead50"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead50" instance=ExtResource( 5 )]
+
 [node name="AbacusBead56" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.184112, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1329,17 +1389,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead56"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead56"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead56" instance=ExtResource( 5 )]
+
 [node name="AbacusBead58" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0135826, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1350,17 +1411,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead58"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead58"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead58" instance=ExtResource( 5 )]
+
 [node name="AbacusBead63" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.185272, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1371,17 +1433,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead63"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead63"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead63" instance=ExtResource( 5 )]
+
 [node name="AbacusBead67" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.407201, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1392,17 +1455,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead67"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead67"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead67" instance=ExtResource( 5 )]
+
 [node name="AbacusBead72" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.595247, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1413,17 +1477,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead72"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead72"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead72" instance=ExtResource( 5 )]
+
 [node name="AbacusBead81" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.781369, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1434,17 +1499,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead81"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead81"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead81" instance=ExtResource( 5 )]
+
 [node name="AbacusBead86" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.971423, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1455,17 +1521,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead86"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead86"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead86" instance=ExtResource( 5 )]
+
 [node name="AbacusBead91" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15156, -0.15979, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1476,17 +1543,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead91"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead91"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.21
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead91" instance=ExtResource( 5 )]
+
 [node name="AbacusBead18" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40999, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1497,17 +1565,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead18"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead18"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead18" instance=ExtResource( 5 )]
+
 [node name="AbacusBead20" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.598142, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1518,17 +1587,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead20"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead20"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead20" instance=ExtResource( 5 )]
+
 [node name="AbacusBead21" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.789725, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1539,17 +1609,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead21"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead21"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead21" instance=ExtResource( 5 )]
+
 [node name="AbacusBead24" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.974504, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1560,17 +1631,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead24"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead24"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead24" instance=ExtResource( 5 )]
+
 [node name="AbacusBead26" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16627, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1581,17 +1653,19 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead26"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead26"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead26" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16627, -0.289504, 0.0358161 )
+
 [node name="AbacusBead4" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.981659, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1602,17 +1676,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead4"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead4"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead4" instance=ExtResource( 5 )]
+
 [node name="AbacusBead5" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774303, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1623,17 +1698,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead5"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead5"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead5" instance=ExtResource( 5 )]
+
 [node name="AbacusBead8" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.603222, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1644,17 +1720,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead8"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead8"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead8" instance=ExtResource( 5 )]
+
 [node name="AbacusBead9" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366307, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1665,17 +1742,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead9"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead9"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead9" instance=ExtResource( 5 )]
+
 [node name="AbacusBead11" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.176772, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1686,17 +1764,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead11"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead11"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead11" instance=ExtResource( 5 )]
+
 [node name="AbacusBead13" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017785, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1707,17 +1786,18 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead13"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead13"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead13" instance=ExtResource( 5 )]
+
 [node name="AbacusBead15" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199943, 0.289504, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1728,14 +1808,16 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead15"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead15"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.26
 angular_limit_y/enabled = false
+
+[node name="sounds_impact" parent="AbacusBead15" instance=ExtResource( 5 )]
 
 [node name="AbacusBead2" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16043, 0.388346, -0.0358161 )
@@ -1748,20 +1830,21 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead2"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
 
-[node name="sounds_impact" parent="AbacusBead2" instance=ExtResource( 3 )]
+[node name="sounds_impact" parent="AbacusBead2" instance=ExtResource( 5 )]
+
+[node name="sounds_impact2" parent="AbacusBead2" instance=ExtResource( 5 )]
 
 [node name="AbacusBead17" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40999, 0.388346, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1772,18 +1855,19 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead17"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead17"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead17" instance=ExtResource( 5 )]
+
 [node name="AbacusBead19" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.598142, 0.388346, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1794,18 +1878,19 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead19"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead19"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead19" instance=ExtResource( 5 )]
+
 [node name="AbacusBead22" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.789725, 0.388346, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1816,18 +1901,19 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead22"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead22"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead22" instance=ExtResource( 5 )]
+
 [node name="AbacusBead23" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.974504, 0.388346, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1838,18 +1924,19 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead23"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead23"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead23" instance=ExtResource( 5 )]
+
 [node name="AbacusBead25" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16627, 0.388346, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1860,18 +1947,19 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead25"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead25"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead25" instance=ExtResource( 5 )]
+
 [node name="AbacusBead3" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.981659, 0.388346, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1882,18 +1970,19 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead3"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead3" instance=ExtResource( 5 )]
+
 [node name="AbacusBead6" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774303, 0.388346, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1904,18 +1993,19 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead6"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead6" instance=ExtResource( 5 )]
+
 [node name="AbacusBead7" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.603222, 0.388346, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1926,18 +2016,19 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead7"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead7" instance=ExtResource( 5 )]
+
 [node name="AbacusBead10" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366307, 0.388346, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1948,18 +2039,19 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead10"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead10"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead10" instance=ExtResource( 5 )]
+
 [node name="AbacusBead12" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.176772, 0.388346, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1970,18 +2062,19 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead12"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead12"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead12" instance=ExtResource( 5 )]
+
 [node name="AbacusBead14" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017785, 0.388346, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -1992,18 +2085,19 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead14"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead14"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
 
+[node name="sounds_impact" parent="AbacusBead14" instance=ExtResource( 5 )]
+
 [node name="AbacusBead16" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199943, 0.388346, -0.0358161 )
 mass = 0.0833333
 angular_damp = 1.0
@@ -2014,13 +2108,15 @@ shape = SubResource( 1 )
 
 [node name="AbacusBead" type="MeshInstance" parent="AbacusBead16"]
 transform = Transform( 0.109882, 0, 0, 0, 0.0649936, 0, 0, 0, 0.109882, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="abacusSlide" type="Generic6DOFJoint" parent="AbacusBead16"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0058721, 0 )
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../AbacusFrame")
+nodes/node_b = NodePath("../../GrabPoint")
 linear_limit_y/lower_distance = -0.16
 angular_limit_y/enabled = false
+
+[node name="sounds_impact" parent="AbacusBead16" instance=ExtResource( 5 )]
 

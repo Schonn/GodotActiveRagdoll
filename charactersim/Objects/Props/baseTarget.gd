@@ -5,12 +5,16 @@ var focusPartList = null
 #area object for detecting distances to targets or obstructions
 var obstacleArea = null
 var reachedTargetArea = null
+var targetDistanceReference = null
 
 #traits for this character which other characters can react to
 var characterTraits = null
 
 #set up object variables
 func _ready():
+	
+	self.targetDistanceReference = self.get_node("targetPart")
+	
 	self.focusPartList = [self.get_node("targetPart"),
 						self.get_node("targetPart2"),
 						self.get_node("targetPart3"),

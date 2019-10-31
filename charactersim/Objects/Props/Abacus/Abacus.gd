@@ -5,17 +5,23 @@ var focusPartList = null
 var movingPartList = null
 #area object for detecting distances to targets or obstructions
 var reachedTargetArea = null
+var targetDistanceReference = null
 
 #traits for this character which other characters can react to
 var characterTraits = null
 
 #set up object variables
 func _ready():
-	self.focusPartList = [self.get_node("AbacusBead1"),
-							self.get_node("AbacusBead2")]
-	self.movingPartList = self.focusPartList #same focus points as moving points
 	
-	self.reachedTargetArea = self.get_node("AbacusFrame/ReachedTargetArea")
+	self.targetDistanceReference = self.get_node("GrabPoint")
+	
+	self.focusPartList = [self.get_node("GrabPoint"),
+							self.get_node("AbacusBead1"),
+							self.get_node("AbacusBead56"),
+							self.get_node("AbacusBead90")]
+	self.movingPartList = self.get_children() #all parts have movement or sound
+	
+	self.reachedTargetArea = self.get_node("GrabPoint/ReachedTargetArea")
 	
 	self.characterTraits = [ #traits relating to this character and how strong each trait is
 								["hard",0.5],
