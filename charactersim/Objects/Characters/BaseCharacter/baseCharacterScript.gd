@@ -134,7 +134,7 @@ func _ready():
 							"neat":1,
 							"messy":-0.6}
 	
-	self.distanceActionTimeMax = 1000 #maximum possible time to play the distance action 
+	self.distanceActionTimeMax = 500 #maximum possible time to play the distance action 
 	self.distanceActionTime = int(rand_range(self.distanceActionTimeMax*0.2,self.distanceActionTimeMax)) #delay to allow character to make a distance action when spotting something before moving to it
 
 	#node for comparing distances between this object and others
@@ -267,6 +267,54 @@ func _ready():
 															self.get_node("Pelvis/moveCycle_StandIdle/HandRightHelper1")
 															]
 											},
+								"crouchIdle":{
+												"FootLeftHelper":[
+															self.get_node("Pelvis/moveCycle_CrouchIdle/FootLeftHelper0")
+															],
+												"FootRightHelper":[
+															self.get_node("Pelvis/moveCycle_CrouchIdle/FootRightHelper0")
+															],
+												"HandLeftHelper":[
+															self.get_node("Pelvis/moveCycle_CrouchIdle/HandLeftHelper0")
+															],
+												"HandRightHelper":[
+															self.get_node("Pelvis/moveCycle_CrouchIdle/HandRightHelper0")
+															]
+											},
+								"standLeftHandGrab":{
+												"FootLeftHelper":[
+															self.get_node("Pelvis/moveCycle_StandIdle/FootLeftHelper0"),
+															self.get_node("Pelvis/moveCycle_StandIdle/FootLeftHelper1")
+															],
+												"FootRightHelper":[
+															self.get_node("Pelvis/moveCycle_StandIdle/FootRightHelper0"),
+															self.get_node("Pelvis/moveCycle_StandIdle/FootRightHelper1")
+															],
+												"HandLeftHelper":[
+															self.get_node("Head/moveCycle_HandsToTarget/HandLeftHelper0")
+															],
+												"HandRightHelper":[
+															self.get_node("Pelvis/moveCycle_StandIdle/HandRightHelper0"),
+															self.get_node("Pelvis/moveCycle_StandIdle/HandRightHelper1")
+															]
+											},
+								"standRightHandGrab":{
+												"FootLeftHelper":[
+															self.get_node("Pelvis/moveCycle_StandIdle/FootLeftHelper0"),
+															self.get_node("Pelvis/moveCycle_StandIdle/FootLeftHelper1")
+															],
+												"FootRightHelper":[
+															self.get_node("Pelvis/moveCycle_StandIdle/FootRightHelper0"),
+															self.get_node("Pelvis/moveCycle_StandIdle/FootRightHelper1")
+															],
+												"HandLeftHelper":[
+															self.get_node("Pelvis/moveCycle_StandIdle/HandLeftHelper0"),
+															self.get_node("Pelvis/moveCycle_StandIdle/HandLeftHelper1")
+															],
+												"HandRightHelper":[
+															self.get_node("Head/moveCycle_HandsToTarget/HandRightHelper0")
+															]
+											},
 								"farWave":{
 												"HandLeftHelper":[
 															self.get_node("Head/moveCycle_FarWave/HandLeftHelper0"),
@@ -313,6 +361,30 @@ func _ready():
 													["moveCycleDelayMax",40],
 													["moveLimit",100],
 													["moveSpeed",0.1],
+													["moveMaxCloseness",0.1]
+												],
+								"crouchIdleLimbs":[ 
+													["moveType","constraintMoveCycle"],
+													["moveCycleName","crouchIdle"],
+													["moveCycleDelayMax",40],
+													["moveLimit",100],
+													["moveSpeed",0.2],
+													["moveMaxCloseness",0.1]
+												],
+								"standLeftHandGrabLimbs":[ 
+													["moveType","constraintMoveCycle"],
+													["moveCycleName","standLeftHandGrab"],
+													["moveCycleDelayMax",40],
+													["moveLimit",100],
+													["moveSpeed",0.3],
+													["moveMaxCloseness",0.1]
+												],
+								"standRightHandGrabLimbs":[ 
+													["moveType","constraintMoveCycle"],
+													["moveCycleName","standRightHandGrab"],
+													["moveCycleDelayMax",40],
+													["moveLimit",100],
+													["moveSpeed",0.3],
 													["moveMaxCloseness",0.1]
 												],
 								"farWaveArms":[ 
@@ -485,29 +557,82 @@ func _ready():
 							}
 							
 	#list of actions to use when close to a target
-	self.closeResponseActions = {"ANY":
-								{3:
-									[ #move action for any subtarget at emotion value of 3
-										[ #random variant 0 of action
-											[ #name for this action, node to update, ticks to wait before randomising from this trigger and action variable arrays
-												self.get_node("FootLeftHelper"),500,quickActionLoadouts["standIdleLimbs"]
-											],
-											[ 
-												self.get_node("FootRightHelper"),500,quickActionLoadouts["standIdleLimbs"]
-											],
-											[ 
-												self.get_node("HandRightHelper"),500,quickActionLoadouts["standIdleLimbs"]
-											],
-											[ 
-												self.get_node("HandLeftHelper"),500,quickActionLoadouts["standIdleLimbs"]
-											],
-											[ 
-												self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
+	self.closeResponseActions = {
+								"ANY":
+									{3:
+										[ #close action for any subtarget at emotion value of 3
+											[ #random variant 0 of action, stand idle
+												[ #name for this action, node to update, ticks to wait before randomising from this trigger and action variable arrays
+													self.get_node("FootLeftHelper"),100,quickActionLoadouts["standIdleLimbs"]
+												],
+												[ 
+													self.get_node("FootRightHelper"),100,quickActionLoadouts["standIdleLimbs"]
+												],
+												[ 
+													self.get_node("HandRightHelper"),100,quickActionLoadouts["standIdleLimbs"]
+												],
+												[ 
+													self.get_node("HandLeftHelper"),100,quickActionLoadouts["standIdleLimbs"]
+												],
+												[ 
+													self.get_node("HandLeft/meshes_default"),100,quickActionLoadouts["meshSwapAttach"]
+												]
 											]
 										]
-									]
-								}
+									},
+								"GrabPoint":
+									{3:
+										[
+											[ #crouching variant
+												[ 
+													self.get_node("FootLeftHelper"),500,quickActionLoadouts["crouchIdleLimbs"]
+												],
+												[ 
+													self.get_node("FootRightHelper"),500,quickActionLoadouts["crouchIdleLimbs"]
+												],
+												[ 
+													self.get_node("HandLeft/meshes_default"),500,quickActionLoadouts["meshSwapAttach"]
+												]
+											],
+											[ #left hand grab standing variant
+												[ 
+													self.get_node("FootLeftHelper"),100,quickActionLoadouts["standIdleLimbs"]
+												],
+												[ 
+													self.get_node("FootRightHelper"),100,quickActionLoadouts["standIdleLimbs"]
+												],
+												[ 
+													self.get_node("HandRightHelper"),100,quickActionLoadouts["standIdleLimbs"]
+												],
+												[ 
+													self.get_node("HandLeftHelper"),100,quickActionLoadouts["standLeftHandGrabLimbs"]
+												],
+												[ 
+													self.get_node("HandLeft/meshes_default"),100,quickActionLoadouts["meshSwapAttach"]
+												]
+											],
+											[ #Right hand grab standing variant
+												[ 
+													self.get_node("FootLeftHelper"),100,quickActionLoadouts["standIdleLimbs"]
+												],
+												[ 
+													self.get_node("FootRightHelper"),100,quickActionLoadouts["standIdleLimbs"]
+												],
+												[ 
+													self.get_node("HandRightHelper"),100,quickActionLoadouts["standRightHandGrabLimbs"]
+												],
+												[ 
+													self.get_node("HandLeftHelper"),100,quickActionLoadouts["standIdleLimbs"]
+												],
+												[ 
+													self.get_node("HandLeft/meshes_default"),100,quickActionLoadouts["meshSwapAttach"]
+												]
+											]
+										]
+									}
 							}
+							
+							
 							
 	#list of actions to use when close to a target
 	self.farResponseActions = 	{"ANY":

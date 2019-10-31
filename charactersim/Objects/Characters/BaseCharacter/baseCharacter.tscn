@@ -123,6 +123,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.33855, 0.446253, 1.34101 )
 [node name="HandRightHelper0" type="Position3D" parent="Head/moveCycle_FarWave"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40917, -2.37469, 0.189701 )
 
+[node name="moveCycle_HandsToTarget" type="Spatial" parent="Head"]
+editor/display_folded = true
+
+[node name="HandLeftHelper0" type="Position3D" parent="Head/moveCycle_HandsToTarget"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340454, -1.2908, 2.80361 )
+
+[node name="HandRightHelper0" type="Position3D" parent="Head/moveCycle_HandsToTarget"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301679, -0.0747142, 2.80361 )
+
 [node name="sounds_emotions" parent="Head" instance=ExtResource( 2 )]
 
 [node name="GyroTop" type="RigidBody" parent="."]
@@ -246,6 +255,7 @@ nodes/node_a = NodePath("..")
 nodes/node_b = NodePath("../../Pelvis")
 
 [node name="Pelvis" type="RigidBody" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.21325, 0 )
 mass = 510.204
 gravity_scale = 3.0
@@ -368,6 +378,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157149, 3.19593, 1.13729 )
 [node name="moveCycle_WalkStrafeRight" type="Spatial" parent="Pelvis"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00471675, -2.2493, 0 )
+visible = false
 
 [node name="FootLeftHelper0" type="Position3D" parent="Pelvis/moveCycle_WalkStrafeRight"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.980267, -0.460546, -0.682705 )
@@ -439,6 +450,22 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24074, 1.7506, -0.176046 )
 
 [node name="HandRightHelper1" type="Position3D" parent="Pelvis/moveCycle_StandIdle"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57265, 1.73744, -0.181216 )
+
+[node name="moveCycle_CrouchIdle" type="Spatial" parent="Pelvis"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00471675, -2.2493, 0 )
+
+[node name="FootLeftHelper0" type="Position3D" parent="Pelvis/moveCycle_CrouchIdle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.498154, 0.355821, -0.867381 )
+
+[node name="FootRightHelper0" type="Position3D" parent="Pelvis/moveCycle_CrouchIdle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.450102, 0.359082, 0.1196 )
+
+[node name="HandLeftHelper0" type="Position3D" parent="Pelvis/moveCycle_CrouchIdle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60981, 2.37711, -0.0456969 )
+
+[node name="HandRightHelper0" type="Position3D" parent="Pelvis/moveCycle_CrouchIdle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60664, 2.35468, -0.194577 )
 
 [node name="obstacleTestArea" type="Area" parent="Pelvis"]
 editor/display_folded = true
@@ -602,7 +629,6 @@ angular_limit_z/upper_angle = 5.0
 angular_limit_z/lower_angle = -5.0
 
 [node name="attachJoint" type="Generic6DOFJoint" parent="HandLeft"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04308e-07, -0.24488, -0.458631 )
 nodes/node_a = NodePath("..")
 collision/exclude_nodes = false
@@ -772,7 +798,6 @@ angular_limit_z/upper_angle = 5.0
 angular_limit_z/lower_angle = -5.0
 
 [node name="attachJoint" type="Generic6DOFJoint" parent="HandRight"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, -0.212918, 0.397813 )
 nodes/node_a = NodePath("..")
 collision/exclude_nodes = false
@@ -858,6 +883,7 @@ transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.4770
 mass = 20.4082
 gravity_scale = 0.01
 can_sleep = false
+angular_damp = 0.1
 
 [node name="meshes_default" type="Spatial" parent="ThighRight"]
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.36124, 0.494178, 0.168971 )
@@ -875,17 +901,18 @@ shape = SubResource( 20 )
 transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
 nodes/node_a = NodePath("..")
 nodes/node_b = NodePath("../../Pelvis")
+angular_limit_y/enabled = false
 angular_limit_y/upper_angle = 40.0
 angular_limit_y/lower_angle = -170.0
 angular_limit_z/upper_angle = 90.0
 angular_limit_z/lower_angle = -90.0
 
 [node name="CalfRight" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.477062, -3.63206, -0.168971 )
 mass = 20.4082
 gravity_scale = 0.01
 can_sleep = false
+angular_damp = 1.0
 
 [node name="meshes_default" type="Spatial" parent="CalfRight"]
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.51514, 0.494178, 0.168971 )
@@ -900,18 +927,18 @@ transform = Transform( 0.541863, 1.65691e-08, 0, 1.65691e-08, 0.162807, 0, 0, 0,
 shape = SubResource( 20 )
 
 [node name="physJoint" type="Generic6DOFJoint" parent="CalfRight"]
-transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, -0.0335431, 0, 0 )
 nodes/node_a = NodePath("..")
 nodes/node_b = NodePath("../../ThighRight")
 angular_limit_y/upper_angle = 170.0
+angular_limit_y/lower_angle = 5.0
 
 [node name="physJointFoot" type="Generic6DOFJoint" parent="CalfRight"]
-transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 1.16308, -0.00341463, -0.00710648 )
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 1.11478, -0.00341463, -0.00710648 )
 nodes/node_a = NodePath("..")
 nodes/node_b = NodePath("../../FootRightHelper")
-angular_limit_x/enabled = false
-angular_limit_x/upper_angle = 40.0
-angular_limit_x/lower_angle = -40.0
+angular_limit_x/upper_angle = 5.0
+angular_limit_x/lower_angle = -5.0
 angular_limit_y/enabled = false
 angular_limit_y/upper_angle = 40.0
 angular_limit_y/lower_angle = -40.0
@@ -925,6 +952,7 @@ transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.48952
 mass = 20.4082
 gravity_scale = 0.01
 can_sleep = false
+angular_damp = 0.1
 
 [node name="meshes_default" type="Spatial" parent="ThighLeft"]
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.36124, -0.472406, 0.168971 )
@@ -942,17 +970,18 @@ shape = SubResource( 20 )
 transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
 nodes/node_a = NodePath("..")
 nodes/node_b = NodePath("../../Pelvis")
+angular_limit_y/enabled = false
 angular_limit_y/upper_angle = 40.0
 angular_limit_y/lower_angle = -170.0
 angular_limit_z/upper_angle = 90.0
 angular_limit_z/lower_angle = -90.0
 
 [node name="CalfLeft" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.489522, -3.63206, -0.168971 )
 mass = 20.4082
 gravity_scale = 0.01
 can_sleep = false
+angular_damp = 1.0
 
 [node name="meshes_default" type="Spatial" parent="CalfLeft"]
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.51514, -0.472406, 0.168971 )
@@ -967,18 +996,18 @@ transform = Transform( 0.541863, 1.65691e-08, 0, 1.65691e-08, 0.162807, 0, 0, 0,
 shape = SubResource( 20 )
 
 [node name="physJoint" type="Generic6DOFJoint" parent="CalfLeft"]
-transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, -0.0335431, 0, 0 )
 nodes/node_a = NodePath("..")
 nodes/node_b = NodePath("../../ThighLeft")
 angular_limit_y/upper_angle = 170.0
+angular_limit_y/lower_angle = 5.0
 
 [node name="physJointFoot" type="Generic6DOFJoint" parent="CalfLeft"]
-transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 1.16308, -0.00341463, -0.00710648 )
+transform = Transform( 1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 1.11478, -0.00341463, -0.00710648 )
 nodes/node_a = NodePath("..")
 nodes/node_b = NodePath("../../FootLeftHelper")
-angular_limit_x/enabled = false
-angular_limit_x/upper_angle = 40.0
-angular_limit_x/lower_angle = -40.0
+angular_limit_x/upper_angle = 5.0
+angular_limit_x/lower_angle = -5.0
 angular_limit_y/enabled = false
 angular_limit_y/upper_angle = 40.0
 angular_limit_y/lower_angle = -40.0
