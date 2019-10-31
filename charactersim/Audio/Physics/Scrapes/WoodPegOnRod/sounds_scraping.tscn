@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Audio/Physics/Scrapes/FroggersGeneric/Froggers_scrape1.ogg" type="AudioStream" id=1]
-[ext_resource path="res://Audio/Physics/Scrapes/FroggersGeneric/Froggers_scrape2.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Audio/Physics/Scrapes/WoodPegOnRod/woodpegslide1.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Audio/Physics/Scrapes/WoodPegOnRod/woodpegslide2.ogg" type="AudioStream" id=2]
 
 [sub_resource type="AudioStreamRandomPitch" id=1]
 audio_stream = ExtResource( 1 )
@@ -14,12 +14,12 @@ audio_stream = ExtResource( 2 )
 [node name="sound_scrape1" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource( 1 )
 unit_db = 1.0
-unit_size = 0.5
+unit_size = 2.0
 max_db = 1.0
 
 [node name="sound_scrape2" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource( 2 )
 unit_db = 1.0
-unit_size = 0.5
+unit_size = 2.0
 max_db = 1.0
 

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/woodpegslide1.ogg-5c0786d881b1ab96d87a242f4615b8ea.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
